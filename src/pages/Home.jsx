@@ -29,6 +29,10 @@ export default function Home() {
                 Authentic Ceylon Craftsmanship × High-Performance Digital
               </span>
             </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs font-space">
+              <span className="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
+              <span className="text-[#10b981] font-bold uppercase tracking-wider">Accepting Q2/Q3 Projects</span>
+            </div>
             <span className="font-space text-xs text-[#94a3b8] uppercase tracking-wider font-semibold hidden sm:inline">
               Colombo Studio • Crafting Digital Pavilions Worldwide
             </span>
