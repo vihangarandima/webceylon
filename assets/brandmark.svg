@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <g transform="translate(4, 8)">
+    <rect width="32" height="32" rx="8" fill="#121417" stroke="#1F242D" stroke-width="1.5"/>
+    <path d="M9 11L16 26L23 11" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="16" cy="19" r="2.5" fill="#D4AF37"/>
+    <path d="M12 21L16 26L20 21" stroke="#34D399" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <text x="46" y="27" fill="#F4F4F5" font-family="'Syne', system-ui, sans-serif" font-weight="800" font-size="16" letter-spacing="0.18em">WEB CEYLON</text>
+  <text x="46" y="37" fill="#10B981" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="600" font-size="8" letter-spacing="0.28em">DIGITAL ARCHITECTURE</text>
+  <circle cx="190" cy="24" r="3" fill="#10B981"/>
+</svg>

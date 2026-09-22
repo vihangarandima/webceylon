@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Contact & Project Commencement — WEB CEYLON Digital Studio</title>
+  <meta name="description" content="Initiate your bespoke web project with WEB CEYLON Studio Colombo. Schedule a discovery call or submit your architectural project brief."/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            "syne": ["Syne", "sans-serif"],
+            "jakarta": ["Plus Jakarta Sans", "sans-serif"],
+            "space": ["Space Grotesk", "monospace", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+
+<body class="bg-[#08090a] font-jakarta text-[#e4e4e7] min-h-screen selection:bg-[#10b981] selection:text-[#08090a] antialiased">
+  <div class="grain-overlay"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 px-4 md:px-12 pt-4">
+    <div class="h-16 max-w-[1680px] mx-auto bg-[#0d0e0f]/85 backdrop-blur-2xl rounded-full px-6 flex items-center justify-between border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+      <a href="index.html" class="flex items-center gap-3">
+        <img alt="WEB CEYLON Brandmark" class="h-8 w-auto object-contain" src="assets/brandmark.svg"/>
+      </a>
+
+      <nav class="hidden xl:flex items-center gap-8">
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="index.html">Selected Work</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="case-studies.html">Case Studies</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="services.html">Services & Estimator</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="heritage-and-vision.html">Heritage & Vision</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="process.html">Process</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#10b981] font-semibold transition-colors" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1d] border border-[#1f2328]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+          <span class="font-space text-[11px] tracking-wider text-[#a1a1aa] live-colombo-clock">[Live IST]</span>
+        </div>
+        <a class="hidden lg:inline-flex items-center gap-2 px-5 py-2 rounded-full btn-emerald font-space text-xs uppercase tracking-wider" href="contact.html">
+          <span>Start a Project</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+        <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 rounded-full bg-[#1f2021] text-[#f4f4f5] flex items-center justify-center hover:bg-[#292a2b]">
+          <span class="material-symbols-outlined text-[22px]">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileDrawerBackdrop" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50"></div>
+  <div id="mobileDrawer" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#0d0e0f] border-l border-[#1f2328] z-50 transform translate-x-full transition-transform duration-400 ease-in-out p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-8 border-b border-[#1f2328]">
+        <img alt="WEB CEYLON Brandmark" class="h-7 w-auto" src="assets/brandmark.svg"/>
+        <button id="closeMobileDrawer" class="w-9 h-9 rounded-full bg-[#1f2021] flex items-center justify-center text-[#a1a1aa] hover:text-white">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col space-y-5 pt-8 font-space text-sm uppercase tracking-widest">
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="index.html">Selected Work</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="case-studies.html">Case Studies</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="services.html">Services & Estimator</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="heritage-and-vision.html">Heritage & Vision</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="process.html">Process</a>
+        <a class="text-[#10b981] font-semibold" href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="space-y-4 pt-6 border-t border-[#1f2328]">
+      <a href="contact.html" class="w-full py-3 rounded-xl btn-emerald flex items-center justify-center gap-2 font-space text-xs uppercase tracking-wider">
+        <span>Commence Brief</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  <main class="w-full pt-28 pb-24">
+    <div class="max-w-[1680px] mx-auto px-4 md:px-12">
+      
+      <!-- HERO -->
+      <div class="space-y-4 pb-16 border-b border-[#1f2328]">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1d] border border-[#1f2328]">
+          <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+          <span class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold">Project Inquiry & Discovery</span>
+        </div>
+        <h1 class="font-syne text-4xl md:text-7xl text-[#f4f4f5] font-extrabold tracking-tight">
+          Let’s Build Something <br/><span class="text-[#10b981] italic">Extraordinary.</span>
+        </h1>
+        <p class="font-jakarta text-base md:text-xl text-[#a1a1aa] max-w-3xl leading-relaxed">
+          Tell us about your brand vision, target timeline, or architectural ambitions. We review every brief and reply within 6 hours.
+        </p>
+      </div>
+
+      <!-- MAIN CONTACT INTERACTIVE GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-16">
+        
+        <!-- Inquiry Form Column -->
+        <div class="lg:col-span-7 rounded-3xl bg-[#0d0e0f] border border-[#1f2328] p-8 md:p-12 shadow-2xl space-y-8">
+          <div class="space-y-2">
+            <span class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold block">Step 01 / 02</span>
+            <h2 class="font-syne text-2xl md:text-3xl text-[#f4f4f5] font-bold">Initiate Project Brief</h2>
+          </div>
+
+          <form id="projectInquiryForm" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Your Name *</label>
+                <input id="senderName" required type="text" placeholder="e.g. Liam Vance" class="w-full px-4 py-3.5 rounded-xl bg-[#1b1c1d] border border-[#1f2328] focus:border-[#10b981] text-[#f4f4f5] font-jakarta text-sm outline-none transition-colors placeholder:text-[#3f3f46]"/>
+              </div>
+              <div class="space-y-2">
+                <label class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Corporate Email *</label>
+                <input required type="email" placeholder="liam@domain.com" class="w-full px-4 py-3.5 rounded-xl bg-[#1b1c1d] border border-[#1f2328] focus:border-[#10b981] text-[#f4f4f5] font-jakarta text-sm outline-none transition-colors placeholder:text-[#3f3f46]"/>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Company / Brand Name</label>
+                <input type="text" placeholder="e.g. Vance Capital or Spices Ltd" class="w-full px-4 py-3.5 rounded-xl bg-[#1b1c1d] border border-[#1f2328] focus:border-[#10b981] text-[#f4f4f5] font-jakarta text-sm outline-none transition-colors placeholder:text-[#3f3f46]"/>
+              </div>
+              <div class="space-y-2">
+                <label class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Target Timeline</label>
+                <select class="w-full px-4 py-3.5 rounded-xl bg-[#1b1c1d] border border-[#1f2328] focus:border-[#10b981] text-[#f4f4f5] font-jakarta text-sm outline-none transition-colors">
+                  <option>Immediate (Within 4 Weeks)</option>
+                  <option selected>Q2 2026 (April – June)</option>
+                  <option>Q3 2026 (July – Sept)</option>
+                  <option>Flexible / Exploring</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Service Selection Multi-Pill -->
+            <div class="space-y-2">
+              <label class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Desired Services (Select All That Apply)</label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center gap-1">
+                  <input type="checkbox" name="services" class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#f4f4f5]">Flagship Web</span>
+                </label>
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center gap-1">
+                  <input type="checkbox" name="services" class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#f4f4f5]">Web App</span>
+                </label>
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center gap-1">
+                  <input type="checkbox" name="services" class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#f4f4f5]">E-Commerce</span>
+                </label>
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center gap-1">
+                  <input type="checkbox" name="services" class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#f4f4f5]">Custom API</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Budget Picker -->
+            <div class="space-y-2">
+              <label class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Estimated Investment Budget (USD)</label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center">
+                  <input type="radio" name="budget" value="5k" class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#f4f4f5] font-bold">$5k – $10k</span>
+                </label>
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center">
+                  <input type="radio" name="budget" value="10k" checked class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#10b981] font-bold">$10k – $25k</span>
+                </label>
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center">
+                  <input type="radio" name="budget" value="25k" class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#f4f4f5] font-bold">$25k – $50k</span>
+                </label>
+                <label class="p-3 rounded-xl bg-[#1b1c1d] border border-[#1f2328] hover:border-[#10b981] cursor-pointer text-center flex flex-col items-center justify-center">
+                  <input type="radio" name="budget" value="50k" class="accent-[#10b981] mb-1"/>
+                  <span class="font-space text-xs text-[#d4af37] font-bold">$50k+ Enterprise</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Project Brief Textarea -->
+            <div class="space-y-2">
+              <label class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Brief Project Vision & Requirements</label>
+              <textarea rows="4" placeholder="Describe your platform goals, current pain points, and what success looks like..." class="w-full px-4 py-3.5 rounded-xl bg-[#1b1c1d] border border-[#1f2328] focus:border-[#10b981] text-[#f4f4f5] font-jakarta text-sm outline-none transition-colors placeholder:text-[#3f3f46]"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl btn-emerald flex items-center justify-center gap-2 font-space text-xs uppercase tracking-wider font-bold">
+              <span>Submit Architectural Brief</span>
+              <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Studio Telemetry & Direct Booking Column -->
+        <div class="lg:col-span-5 space-y-8">
+          
+          <!-- Direct Studio Info -->
+          <div class="rounded-3xl bg-[#0d0e0f] border border-[#1f2328] p-8 space-y-6">
+            <div class="space-y-2">
+              <span class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold block">Studio Coordinates</span>
+              <h3 class="font-syne text-2xl text-[#f4f4f5] font-bold">Studio Colombo HQ</h3>
+            </div>
+
+            <div class="space-y-4 text-sm font-jakarta text-[#a1a1aa]">
+              <div class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-[20px] text-[#10b981]">location_on</span>
+                <div>
+                  <span class="text-[#f4f4f5] font-semibold block">Ward Place, Cinnamon Gardens</span>
+                  <span>Colombo 07, Sri Lanka 🇱🇰</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[20px] text-[#10b981]">mail</span>
+                <div>
+                  <span class="text-[#a1a1aa] text-xs font-space uppercase block">Direct Inquiries</span>
+                  <a href="mailto:hello@webceylon.com" class="text-[#f4f4f5] hover:text-[#10b981] font-semibold transition-colors">hello@webceylon.com</a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[20px] text-[#10b981]">call</span>
+                <div>
+                  <span class="text-[#a1a1aa] text-xs font-space uppercase block">Phone / Direct Line</span>
+                  <a href="tel:+94112548900" class="text-[#f4f4f5] hover:text-[#10b981] font-semibold transition-colors">+94 11 254 8900</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328] flex items-center justify-between">
+              <span class="font-space text-xs text-[#a1a1aa] uppercase">Studio Time (IST)</span>
+              <span class="font-space text-xs text-[#10b981] font-bold live-colombo-clock">[Live IST]</span>
+            </div>
+          </div>
+
+          <!-- Direct Calendar Discovery Booking -->
+          <div class="rounded-3xl bg-gradient-to-b from-[#1b1c1d] to-[#0d0e0f] border border-[#1f2328] p-8 space-y-6">
+            <div class="space-y-2">
+              <span class="font-space text-xs text-[#d4af37] uppercase tracking-widest font-semibold block">Prefer Real-time Alignment?</span>
+              <h3 class="font-syne text-2xl text-[#f4f4f5] font-bold">Book a Discovery Video Call</h3>
+              <p class="font-jakarta text-xs text-[#a1a1aa] leading-relaxed">
+                30-minute strategic architectural session with our Lead Architect in Colombo. We will discuss your technical feasibility, budget, and sprint milestones.
+              </p>
+            </div>
+
+            <button class="w-full py-3.5 rounded-xl btn-secondary flex items-center justify-center gap-2 font-space text-xs uppercase tracking-wider font-semibold" onclick="showToast('Discovery calendar opened. Select your preferred timezone slot.')">
+              <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+              <span>Select Time on Calendar</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-[#0d0e0f] border-t border-[#1f2328] pt-16 pb-12">
+    <div class="max-w-[1680px] mx-auto px-4 md:px-12">
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-space text-xs text-[#a1a1aa]">© 2026 WEB CEYLON Digital Studio. All rights reserved.</p>
+        <p class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Geoffrey Bawa Architectural Digital Modernism</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

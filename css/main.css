@@ -1,0 +1,218 @@
+/* ==========================================================================
+   WEB CEYLON — Obsidian Ceylon Gallery Design System
+   ========================================================================== */
+
+:root {
+  --bg: #08090a;
+  --surface: #121315;
+  --surface-lowest: #0d0e0f;
+  --surface-low: #1b1c1d;
+  --surface-container: #1f2021;
+  --surface-high: #292a2b;
+  --surface-highest: #343536;
+  --surface-bright: #38393a;
+  
+  --primary: #10b981;
+  --primary-glow: #4edea3;
+  --primary-dark: #003824;
+  --primary-container: #00422b;
+  
+  --secondary: #d4af37;
+  --secondary-glow: #ffe088;
+  --secondary-container: #af8d11;
+  
+  --tertiary: #06b6d4;
+  --tertiary-glow: #4cd7f6;
+  
+  --text-main: #f4f4f5;
+  --text-body: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+  
+  --border-subtle: #1f2328;
+  --border-active: #3c4a42;
+  --border-emerald: rgba(16, 185, 129, 0.4);
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: #08090a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-high);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Font classes */
+.font-syne {
+  font-family: 'Syne', sans-serif;
+}
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.font-space {
+  font-family: 'Space Grotesk', monospace, sans-serif;
+}
+
+/* Glassmorphism Refraction */
+.glass-panel {
+  background: rgba(14, 16, 19, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-nav {
+  background: rgba(13, 14, 15, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(18, 19, 21, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.15);
+}
+
+/* Ambient Emerald Glowing Orbs */
+.ambient-glow-emerald {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0) 70%);
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+.ambient-glow-gold {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 70%);
+  pointer-events: none;
+  filter: blur(90px);
+}
+
+/* Interactive Button Aura */
+.btn-emerald {
+  background: #10b981;
+  color: #08090a;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.35);
+}
+
+.btn-emerald:hover {
+  background: #4edea3;
+  box-shadow: 0 0 36px 0px rgba(16, 185, 129, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--surface-container);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--surface-high);
+  border-color: var(--text-muted);
+}
+
+/* Dynamic Underline Animation */
+.link-underlined {
+  position: relative;
+  display: inline-block;
+}
+.link-underlined::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background: var(--primary);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underlined:hover::after {
+  width: 100%;
+}
+
+/* Subtle Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.025;
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Toast Notifications */
+#toastNotification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#toastNotification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.96); }
+}
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s infinite ease-in-out;
+}

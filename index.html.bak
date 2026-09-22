@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>WEB CEYLON — Bespoke Websites & Digital Architecture Worth Showing Off</title>
+  <meta name="description" content="WEB CEYLON is a premier digital architecture studio in Colombo, crafting museum-grade bespoke websites, e-commerce engines, and high-performance web applications."/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#00422b",
+            "primary": "#10b981",
+            "primary-glow": "#4edea3",
+            "on-background": "#e3e2e3",
+            "surface-dim": "#121315",
+            "surface": "#121315",
+            "background": "#08090a",
+            "secondary": "#d4af37",
+            "secondary-container": "#af8d11",
+            "tertiary": "#06b6d4",
+            "surface-container-lowest": "#0d0e0f",
+            "surface-container-low": "#1b1c1d",
+            "surface-container": "#1f2021",
+            "surface-container-high": "#292a2b",
+            "surface-container-highest": "#343536",
+            "on-surface": "#f4f4f5",
+            "on-surface-variant": "#a1a1aa",
+            "outline": "#86948a",
+            "outline-variant": "#1f2328"
+          },
+          fontFamily: {
+            "syne": ["Syne", "sans-serif"],
+            "jakarta": ["Plus Jakarta Sans", "sans-serif"],
+            "space": ["Space Grotesk", "monospace", "sans-serif"]
+          },
+          spacing: {
+            "margin": "4rem",
+            "margin-mobile": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.75rem",
+            "space-xl": "3rem"
+          }
+        }
+      }
+    };
+  </script>
+  
+  <!-- Fonts & Icons -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap" rel="stylesheet"/>
+  
+  <!-- Custom Design System Stylesheet -->
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+
+<body class="bg-[#08090a] font-jakarta text-[#e4e4e7] min-h-screen selection:bg-[#10b981] selection:text-[#08090a] antialiased">
+  <div class="grain-overlay"></div>
+
+  <!-- ================================================================= -->
+  <!-- NAVIGATION HEADER                                                -->
+  <!-- ================================================================= -->
+  <header class="fixed top-0 left-0 w-full z-50 px-4 md:px-12 pt-4">
+    <div class="h-16 max-w-[1680px] mx-auto bg-[#0d0e0f]/85 backdrop-blur-2xl rounded-full px-6 flex items-center justify-between border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3">
+        <img alt="WEB CEYLON Brandmark" class="h-8 w-auto object-contain" src="assets/brandmark.svg"/>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden xl:flex items-center gap-8">
+        <a class="font-space text-xs uppercase tracking-widest text-[#10b981] font-semibold transition-colors hover:text-[#4edea3]" href="index.html">Selected Work</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="case-studies.html">Case Studies</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="services.html">Services & Estimator</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="heritage-and-vision.html">Heritage & Vision</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="process.html">Process</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Live Colombo Time / Lang Indicator -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1d] border border-[#1f2328]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+          <span class="font-space text-[11px] tracking-wider text-[#a1a1aa] live-colombo-clock">[Live IST]</span>
+        </div>
+
+        <!-- Start a Project CTA Button -->
+        <a class="hidden lg:inline-flex items-center gap-2 px-5 py-2 rounded-full btn-emerald font-space text-xs uppercase tracking-wider" href="contact.html">
+          <span>Start a Project</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 rounded-full bg-[#1f2021] text-[#f4f4f5] flex items-center justify-center hover:bg-[#292a2b] transition-colors">
+          <span class="material-symbols-outlined text-[22px]">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop & Menu -->
+  <div id="mobileDrawerBackdrop" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50"></div>
+  <div id="mobileDrawer" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#0d0e0f] border-l border-[#1f2328] z-50 transform translate-x-full transition-transform duration-400 ease-in-out p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-8 border-b border-[#1f2328]">
+        <img alt="WEB CEYLON Brandmark" class="h-7 w-auto" src="assets/brandmark.svg"/>
+        <button id="closeMobileDrawer" class="w-9 h-9 rounded-full bg-[#1f2021] flex items-center justify-center text-[#a1a1aa] hover:text-white">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <nav class="flex flex-col space-y-5 pt-8 font-space text-sm uppercase tracking-widest">
+        <a class="text-[#10b981] font-semibold" href="index.html">Selected Work</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="case-studies.html">Case Studies</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="services.html">Services & Estimator</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="heritage-and-vision.html">Heritage & Vision</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="process.html">Process</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="space-y-4 pt-6 border-t border-[#1f2328]">
+      <div class="font-space text-xs text-[#a1a1aa] flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
+        <span>Colombo Studio • Available Q2/Q3</span>
+      </div>
+      <a href="contact.html" class="w-full py-3 rounded-xl btn-emerald flex items-center justify-center gap-2 font-space text-xs uppercase tracking-wider">
+        <span>Commence Brief</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  <main class="w-full pt-20">
+    <!-- Top Ambient Luster Glow -->
+    <div class="relative w-full overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[340px] bg-gradient-to-b from-[#10b981]/15 via-[#10b981]/5 to-transparent blur-[120px] pointer-events-none -z-10"></div>
+      
+      <!-- ================================================================= -->
+      <!-- 1. HERO SECTION                                                  -->
+      <!-- ================================================================= -->
+      <section class="max-w-[1680px] mx-auto w-full px-4 md:px-12 pt-8 md:pt-16">
+        
+        <!-- Eyebrow Meta Pill -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1d] border border-[#1f2328]">
+            <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-[#10b981] -ml-4"></span>
+            <span class="font-space text-xs text-[#f4f4f5] uppercase tracking-widest pl-1">Web Ceylon — Studio Colombo</span>
+          </div>
+          <span class="text-[#3c4a42] select-none">/</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1f2021] border border-[#1f2328]">
+            <span class="font-space text-xs text-[#10b981] tracking-widest uppercase">Digital Architecture</span>
+            <span class="text-[#a1a1aa] font-space text-xs font-light select-none">|</span>
+            <span class="font-jakarta text-xs text-[#f4f4f5] tracking-wider font-medium">ශ්‍රී ලංකා</span>
+          </div>
+          <div class="hidden lg:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1d] border border-[#1f2328] text-[#d4af37]">
+            <span class="material-symbols-outlined text-[14px]">star</span>
+            <span class="font-space text-xs tracking-wider uppercase">Awwwards Nominee 2025</span>
+          </div>
+        </div>
+
+        <!-- Hero Colossal Headline -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+          <div class="lg:col-span-8">
+            <h1 class="font-syne text-5xl md:text-8xl lg:text-[96px] text-[#f4f4f5] font-extrabold tracking-tight leading-[0.95] select-none">
+              We Build <br/>
+              <span class="text-[#10b981] italic font-syne">Websites</span> Worth <br/>
+              Showing Off.
+            </h1>
+          </div>
+          <div class="lg:col-span-4 space-y-6 lg:pb-2">
+            <p class="font-jakarta text-lg text-[#a1a1aa] leading-relaxed">
+              Beautiful websites and bespoke digital systems engineered around ambitious global businesses. Made in Ceylon. Built for the world.
+            </p>
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a class="inline-flex items-center gap-2 px-7 py-3 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-bold" href="#selected-work">
+                <span>Explore Our Work</span>
+                <span class="material-symbols-outlined text-[18px]">south</span>
+              </a>
+              <a class="inline-flex items-center gap-2 px-7 py-3 rounded-lg btn-secondary font-space text-xs uppercase tracking-wider" href="contact.html">
+                <span>Start a Project</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monumental Viewport Anchor: Featured Project 01 (CarRents.lk in Minimal Browser Shell) -->
+        <div class="relative w-full rounded-2xl bg-[#0d0e0f] p-2 md:p-4 border border-[#1f2328] shadow-2xl transition-all duration-700 group">
+          <!-- Minimal Browser Glass Chrome -->
+          <div class="h-10 md:h-12 w-full rounded-xl bg-[#1b1c1d] px-4 flex items-center justify-between gap-4 mb-2">
+            <!-- Traffic Lights -->
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-[#ef4444]/70"></span>
+              <span class="w-3 h-3 rounded-full bg-[#eab308]/70"></span>
+              <span class="w-3 h-3 rounded-full bg-[#22c55e]/70"></span>
+            </div>
+            <!-- Centered Omnibar Capsule -->
+            <div class="flex-1 max-w-xl h-7 md:h-8 rounded-full bg-[#292a2b] flex items-center justify-between px-4 text-[#a1a1aa]">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[14px] text-[#10b981]">lock</span>
+                <span class="font-space text-xs tracking-wider text-[#f4f4f5]">https://carrents.lk</span>
+              </div>
+              <div class="hidden sm:flex items-center gap-2 font-space text-[11px] text-[#10b981]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span>LIVE PRODUCTION</span>
+              </div>
+            </div>
+            <!-- Right Controls -->
+            <div class="flex items-center gap-2 text-[#a1a1aa]">
+              <button class="w-7 h-7 rounded bg-[#1f2021] flex items-center justify-center hover:text-white transition-colors" title="Reload Shell">
+                <span class="material-symbols-outlined text-[16px]">refresh</span>
+              </button>
+              <button class="hidden md:flex items-center gap-1 px-3 py-1 rounded bg-[#10b981]/15 text-[#10b981] hover:bg-[#10b981] hover:text-[#08090a] transition-all font-space text-xs uppercase" onclick="openCaseStudy('carrents')">
+                <span class="material-symbols-outlined text-[14px]">tune</span>
+                <span>Inspect Dossier</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Master Viewport Media Frame -->
+          <div class="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden rounded-xl bg-[#1f2021]">
+            <img alt="CarRents.lk luxury vehicle rental platform website designed and developed by WEB CEYLON" class="w-full h-full object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUHXzQ80mfW28ygd8hlbk2UcsLgAsg-C5jHa9UwPn9e_377clk9DhRth-br2reztmVG6pxU5xnOh2V-vc2TzrnPUWYEoCClZFdThhH4K2k79VFinGN8wUZLAC1vnm3eGQmJaXsf85ka9YcW5OsgiIwd36u1eNXreoGHuaqd3nk5Gvy_aMhqR3CvniooPGL3Zp49XzenlnIFqh5W9UaPfdL4MwtDyjP3GsvtXaPH3kwV5DKWsieKEsE"/>
+            
+            <!-- Overlaid Live Telemetry Pills -->
+            <div class="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 p-4 md:p-6 rounded-xl bg-[#0d0e0f]/85 backdrop-blur-xl border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-2xl">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="font-space text-xs uppercase tracking-widest text-[#10b981]">Featured Client Release</span>
+                  <span class="text-[#a1a1aa]">•</span>
+                  <span class="font-space text-xs text-[#a1a1aa]">Automotive & Chauffeur Systems</span>
+                </div>
+                <h2 class="font-syne text-xl md:text-2xl text-[#f4f4f5] font-bold">CarRents.lk — The Premier Fleet Architecture of Sri Lanka</h2>
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="px-4 py-2 rounded-lg bg-[#1f2021] border border-[#1f2328] text-right">
+                  <span class="block font-space text-[10px] text-[#a1a1aa] uppercase">Booking Conversion</span>
+                  <span class="font-syne text-xl text-[#10b981] font-bold">+240%</span>
+                </div>
+                <button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider" onclick="openCaseStudy('carrents')">
+                  <span>View Case Study</span>
+                  <span class="material-symbols-outlined text-[16px]">visibility</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 2. INDUSTRY FILTER BAR & SELECTED WORK GALLERY                    -->
+      <!-- ================================================================= -->
+      <section class="max-w-[1680px] mx-auto w-full px-4 md:px-12 pt-24" id="selected-work">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#1f2328]">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+              <span class="font-space text-xs uppercase tracking-widest text-[#a1a1aa]">Index of Projects [01 — 05 Flagships]</span>
+            </div>
+            <h2 class="font-syne text-3xl md:text-5xl text-[#f4f4f5] font-bold tracking-tight">Curated Artifacts</h2>
+          </div>
+          <p class="font-jakarta text-sm md:text-base text-[#a1a1aa] max-w-sm">
+            A showcase of bespoke e-commerce engines, web applications, and immersive websites manufactured with Sri Lankan precision.
+          </p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="flex items-center gap-2 overflow-x-auto py-6 no-scrollbar">
+          <button class="project-filter-btn px-5 py-2 rounded-full bg-[#10b981] text-[#08090a] font-space text-xs uppercase tracking-wider whitespace-nowrap font-bold" data-filter="all">All Projects (5)</button>
+          <button class="project-filter-btn px-5 py-2 rounded-full bg-[#1f2021] text-[#a1a1aa] hover:text-[#f4f4f5] font-space text-xs uppercase tracking-wider whitespace-nowrap transition-colors" data-filter="automotive">Automotive & Logistics</button>
+          <button class="project-filter-btn px-5 py-2 rounded-full bg-[#1f2021] text-[#a1a1aa] hover:text-[#f4f4f5] font-space text-xs uppercase tracking-wider whitespace-nowrap transition-colors" data-filter="ev-iot">Electric Vehicles & IoT</button>
+          <button class="project-filter-btn px-5 py-2 rounded-full bg-[#1f2021] text-[#a1a1aa] hover:text-[#f4f4f5] font-space text-xs uppercase tracking-wider whitespace-nowrap transition-colors" data-filter="hospitality">Luxury Hospitality</button>
+          <button class="project-filter-btn px-5 py-2 rounded-full bg-[#1f2021] text-[#a1a1aa] hover:text-[#f4f4f5] font-space text-xs uppercase tracking-wider whitespace-nowrap transition-colors" data-filter="ecommerce">E-Commerce & Retail</button>
+          <button class="project-filter-btn px-5 py-2 rounded-full bg-[#1f2021] text-[#a1a1aa] hover:text-[#f4f4f5] font-space text-xs uppercase tracking-wider whitespace-nowrap transition-colors" data-filter="fintech">Custom Systems & FinTech</button>
+        </div>
+
+        <!-- GALLERY CONTAINER WITH ASYMMETRICAL EDITORIAL RHYTHM -->
+        <div class="space-y-12">
+          
+          <!-- PROJECT 02: HIGH-TECH IoT PLATFORM (ChargeUp EV Ceylon) -->
+          <div class="project-card" data-category="ev-iot">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-2xl bg-[#0d0e0f] p-6 md:p-10 border border-[#1f2328] shadow-xl">
+              <!-- Left Narrative Column -->
+              <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-3 py-1 rounded-full bg-[#06b6d4]/15 text-[#06b6d4] font-space text-xs uppercase tracking-widest font-semibold">IoT & Grid Telemetry</span>
+                  <span class="px-3 py-1 rounded-full bg-[#1b1c1d] text-[#a1a1aa] font-space text-xs uppercase">React • Go • WebSockets</span>
+                </div>
+                <div>
+                  <span class="font-space text-xs text-[#10b981] uppercase tracking-widest block mb-1">Project 02 / 05</span>
+                  <h3 class="font-syne text-2xl md:text-4xl text-[#f4f4f5] font-bold tracking-tight">
+                    ChargeUp EV Ceylon
+                  </h3>
+                  <p class="font-jakarta text-sm md:text-base text-[#a1a1aa] mt-3 leading-relaxed">
+                    Nationwide real-time EV charging mesh and charging station router for Sri Lanka. Features sub-second telemetry, dynamic route optimization across the central highlands, and instant glassmorphic station metrics.
+                  </p>
+                </div>
+                <!-- Spec Metric Grid -->
+                <div class="grid grid-cols-3 gap-3 pt-2">
+                  <div class="p-3 rounded-lg bg-[#1b1c1d] border border-[#1f2328]">
+                    <span class="block font-space text-[10px] text-[#a1a1aa] uppercase">Grid Nodes</span>
+                    <span class="font-syne text-xl text-[#f4f4f5] font-bold">140+</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-[#1b1c1d] border border-[#1f2328]">
+                    <span class="block font-space text-[10px] text-[#a1a1aa] uppercase">Latency</span>
+                    <span class="font-syne text-xl text-[#06b6d4] font-bold">&lt;85ms</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-[#1b1c1d] border border-[#1f2328]">
+                    <span class="block font-space text-[10px] text-[#a1a1aa] uppercase">Uptime SLA</span>
+                    <span class="font-syne text-xl text-[#10b981] font-bold">99.98%</span>
+                  </div>
+                </div>
+                <div class="pt-2">
+                  <button class="inline-flex items-center gap-2 text-[#10b981] font-space text-xs uppercase tracking-wider font-semibold hover:underline" onclick="openCaseStudy('chargeup')">
+                    <span>Inspect Full Telemetry Dossier</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Right Visual Display (ChargeUp Curved Display Viewport) -->
+              <div class="lg:col-span-7 order-1 lg:order-2">
+                <div class="relative rounded-xl overflow-hidden bg-[#1f2021] border border-[#1f2328] shadow-2xl group/img">
+                  <img alt="ChargeUp EV Ceylon curved monitor dashboard" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc2JCg2pZ431Wm-gcUI7Qq7CyeogBxzmLFi_d2bj7VvIJq66OzZhLvkN4A6jHNxWHOOohsBZDiAEjjwrU8GVkHut5STcYe8I6sJ-keXrO30hWSj0uyfL-sSNWLTgHouGVDRoPz-TQhX7O1u_PzLxaR-fO8AlR9kqxlgKTnq4JpM5Mz7jOHEfBf2ABuaNeKmmjm6xYZwi18gGs3wy6cB-yoHCY35azJuiq7XrVVaL2PH4IJ4lQSoYGp"/>
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#0d0e0f]/80 via-transparent to-white/5 pointer-events-none"></div>
+                  <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#0d0e0f]/90 backdrop-blur-md border border-[#1f2328] flex items-center gap-2 text-[#10b981] font-space text-xs">
+                    <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
+                    <span>LIVE SRI LANKA GRID MESH</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECTS 03 & 04: TWO-COLUMN ASYMMETRIC EDITORIAL GRID -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            
+            <!-- Project 03: Luxury Hospitality (Lanka Luxe Heritage) -->
+            <div class="md:col-span-7 project-card" data-category="hospitality">
+              <div class="rounded-2xl bg-[#0d0e0f] p-6 md:p-8 border border-[#1f2328] shadow-xl space-y-6 group">
+                <div class="relative aspect-[16/11] w-full rounded-xl overflow-hidden bg-[#1f2021]">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Tropical Modernist villa in Galle Fort" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNZRc53117CP1ZYCxrYXiRrlB6__kNGaLYqDp2UhdOLBHGyYJHP4txTuF8GNZdYntsUNSjWInIWdGI2Ceucke_JUh_qLHj1IObuPzrykRCR8hZ_m2Kpk2kT5skL6-9eSI4IT-sCP93kSoebJjlh1IEEO5FyTaMwctgbwOkr99urfI9X1pPBaqvlerE0OOsVEvA_QAjP_SJppb3y0bjZEbUuhJ4rfgMZCLPKoXFLzL3fKSxInJe1OUm"/>
+                  <div class="absolute top-4 left-4 flex items-center gap-2">
+                    <span class="px-3 py-1 rounded-full bg-[#d4af37]/20 text-[#d4af37] font-space text-xs uppercase tracking-widest font-semibold">Luxury Hospitality</span>
+                    <span class="px-3 py-1 rounded-full bg-[#0d0e0f]/90 text-[#a1a1aa] font-space text-xs">Awwwards Site of the Day</span>
+                  </div>
+                  <div class="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-[#0d0e0f]/90 backdrop-blur text-[#f4f4f5] font-space text-xs flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px] text-[#10b981]">bed</span>
+                    <span>Direct Booking Engine</span>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <span class="font-space text-xs text-[#10b981] uppercase tracking-widest block">Project 03 / 05</span>
+                  <h3 class="font-syne text-2xl text-[#f4f4f5] font-bold">Lanka Luxe Heritage Stays</h3>
+                  <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                    A high-touch bespoke booking system and immersive digital editorial for a premier portfolio of heritage colonial estates in Kandy and Galle. Reduced OTA commissions by 68% in the first quarter.
+                  </p>
+                  <div class="flex items-center justify-between pt-2 border-t border-[#1f2328]">
+                    <div class="flex items-center gap-2 font-space text-xs text-[#a1a1aa]">
+                      <span>Next.js 14</span>
+                      <span>•</span>
+                      <span>Sanity CMS</span>
+                      <span>•</span>
+                      <span>Stripe</span>
+                    </div>
+                    <button class="text-[#10b981] font-space text-xs uppercase tracking-widest hover:underline flex items-center gap-1 font-semibold" onclick="openCaseStudy('lankaluxe')">
+                      <span>View Dossier</span>
+                      <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 04: Global E-Commerce (Mayura Ceylon Spices) -->
+            <div class="md:col-span-5 md:mt-12 project-card" data-category="ecommerce">
+              <div class="rounded-2xl bg-[#0d0e0f] p-6 md:p-8 border border-[#1f2328] shadow-xl space-y-6 group">
+                <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-[#1f2021]">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Artisanal Ceylon spices packaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUXmvrabBbX0kW2c7e-K2gDoBpjchwAHo0fjxu4nvIXjQ7lGbIkPV1RcuanBeuH9hMT3m3OadszWuSQcmcEL93WGo4ZfH0g3MrHOjMA9zlVsnOjXzhPom63IwqMn5ak-x74lNp4DOAqLxP74kjA0XSRx0wOkX0HVTCKwpfeDeOVYRd7f_9TuyWCapDDpVonaoockwYPpmBGHOVQQB8S0s_IeN0Bva9l4QxhOKv_GGpA4WiwZT9nyVE"/>
+                  <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 rounded-full bg-[#1f2021]/90 text-[#f4f4f5] font-space text-xs uppercase tracking-widest">Direct-to-Consumer Global</span>
+                  </div>
+                  <div class="absolute bottom-4 left-4 right-4 p-3 rounded-lg bg-[#0d0e0f]/85 backdrop-blur-md flex items-center justify-between border border-[#1f2328]">
+                    <span class="font-space text-xs text-[#f4f4f5]">Multi-Currency Cart</span>
+                    <span class="font-space text-xs text-[#10b981] font-semibold">USD • EUR • GBP • JPY</span>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <span class="font-space text-xs text-[#10b981] uppercase tracking-widest block">Project 04 / 05</span>
+                  <h3 class="font-syne text-2xl text-[#f4f4f5] font-bold">Mayura Ceylon Spices</h3>
+                  <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                    Global direct-to-consumer digital commerce engine connecting century-old southern Sri Lankan spice estates directly with Michelin-starred kitchens across Europe and North America.
+                  </p>
+                  <div class="flex items-center justify-between pt-2 border-t border-[#1f2328]">
+                    <span class="font-space text-xs text-[#a1a1aa]">Shopify Plus • WebGL 3D</span>
+                    <button class="text-[#10b981] font-space text-xs uppercase tracking-widest hover:underline flex items-center gap-1 font-semibold" onclick="openCaseStudy('mayura')">
+                      <span>View Dossier</span>
+                      <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- PROJECT 05: SPLIT-SCREEN TICKET & CULTURE ENGINE (Ceylon Symphony Pavilion) -->
+          <div class="project-card" data-category="fintech">
+            <div class="grid grid-cols-1 lg:grid-cols-12 rounded-2xl bg-[#0d0e0f] border border-[#1f2328] overflow-hidden shadow-xl">
+              <div class="lg:col-span-6 p-6 md:p-12 flex flex-col justify-between space-y-6">
+                <div>
+                  <div class="flex items-center gap-2 mb-4">
+                    <span class="px-3 py-1 rounded-full bg-[#d4af37]/20 text-[#d4af37] font-space text-xs uppercase tracking-widest font-semibold">Performing Arts & Cinema</span>
+                    <span class="px-3 py-1 rounded-full bg-[#1b1c1d] text-[#a1a1aa] font-space text-xs uppercase">Custom Seating Matrix</span>
+                  </div>
+                  <span class="font-space text-xs text-[#10b981] uppercase tracking-widest block mb-1">Project 05 / 05</span>
+                  <h3 class="font-syne text-2xl md:text-3xl text-[#f4f4f5] font-bold">Ceylon Symphony Pavilion</h3>
+                  <p class="font-jakarta text-sm md:text-base text-[#a1a1aa] mt-2 leading-relaxed">
+                    Interactive real-time ticketing ecosystem and 3D architectural seat selector for Colombo’s foremost performing arts center. Handles 12,000 concurrent ticket drops with zero latency bottlenecks.
+                  </p>
+                </div>
+                <!-- Interactive Demo Micro-Component -->
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328] space-y-2">
+                  <div class="flex items-center justify-between text-[#f4f4f5]">
+                    <span class="font-space text-xs uppercase tracking-wider text-[#a1a1aa]">Live Seat Availability: Main Auditorium</span>
+                    <span class="font-space text-xs text-[#10b981] font-bold">92% Reserved</span>
+                  </div>
+                  <div class="w-full bg-[#292a2b] h-2 rounded-full overflow-hidden">
+                    <div class="bg-[#10b981] h-full rounded-full w-[92%]"></div>
+                  </div>
+                  <div class="flex justify-between items-center text-[11px] text-[#a1a1aa] pt-1 font-space">
+                    <span>Tier A (VIP Box): SOLD OUT</span>
+                    <span>Tier B: 14 seats left</span>
+                    <span>Tier C: Available</span>
+                  </div>
+                </div>
+                <div>
+                  <button class="inline-flex items-center gap-2 px-6 py-3 rounded-lg btn-secondary font-space text-xs uppercase tracking-wider" onclick="openCaseStudy('symphony')">
+                    <span>Inspect High-Concurrency Architecture</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+              <div class="lg:col-span-6 relative bg-[#1f2021] min-h-[340px]">
+                <img class="w-full h-full object-cover" alt="Architectural concert hall interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmQOSbp6qq4IeExU_dYssM2MAeSUzlrV5VYKRIT9p4uslChHVO0SY76LWhJ3JJmu6791KHw15BHF2ZleSPB2DafP6XfTu22D5FkHKVdDiIenJhwf2eEzQ5Zv47xZCEHN6cUOBItDPFAIfRRtoTRbWj6mWtrGxAoPzE1X6u-8W5zSkHQfeZ4AHIAMo5NNGYi7jeriPs-J_KAUG2ny50bG_rJLFcj_EUmGGgcz5CFXgXt8VAhx18honk"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0d0e0f] via-transparent to-transparent lg:hidden"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 3. "DON'T TAKE OUR WORD FOR IT. EXPLORE THE PRECISION"            -->
+      <!-- Cascading 3D angled UI viewports                                 -->
+      <!-- ================================================================= -->
+      <section class="max-w-[1680px] mx-auto w-full px-4 md:px-12 pt-24">
+        <div class="rounded-2xl bg-[#0d0e0f] p-6 md:p-12 overflow-hidden relative border border-[#1f2328] shadow-2xl">
+          <!-- Ambient radial backlight -->
+          <div class="ambient-glow-emerald top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"></div>
+
+          <div class="text-center max-w-3xl mx-auto space-y-3 mb-16 relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b981]/15 text-[#10b981]">
+              <span class="material-symbols-outlined text-[16px]">verified</span>
+              <span class="font-space text-xs uppercase tracking-widest font-semibold">Peerless Digital Craft</span>
+            </div>
+            <h2 class="font-syne text-3xl md:text-5xl text-[#f4f4f5] font-bold tracking-tight">
+              Don't Take Our Word For It. <br/><span class="text-[#10b981] italic">Explore The Precision.</span>
+            </h2>
+            <p class="font-jakarta text-base md:text-lg text-[#a1a1aa]">
+              Every component, checkout flow, animation curve, and database query is hand-tuned in Colombo to outperform silicon valley agency standards.
+            </p>
+          </div>
+
+          <!-- 3-Tier Cascading Perspective UI Showcase -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <!-- Card 1: Dynamic Responsive Engine -->
+            <div class="rounded-xl bg-[#1b1c1d] p-6 space-y-6 transform md:-rotate-1 hover:rotate-0 transition-transform duration-500 border border-[#1f2328] shadow-xl">
+              <div class="flex items-center justify-between">
+                <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Mobile Viewport</span>
+                <span class="px-2 py-0.5 rounded bg-[#10b981]/20 text-[#10b981] text-[10px] font-space uppercase font-bold">BUILT BY WEB CEYLON</span>
+              </div>
+              <!-- Interactive Mobile Frame Mockup -->
+              <div class="w-full h-64 rounded-xl bg-[#0d0e0f] p-3 overflow-hidden relative flex flex-col justify-between border border-[#1f2328]">
+                <div class="h-4 w-full bg-[#1f2021] rounded-full flex items-center justify-between px-2">
+                  <span class="text-[9px] text-[#a1a1aa] font-space">9:41</span>
+                  <span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
+                </div>
+                <div class="space-y-2 py-4">
+                  <div class="h-3 w-3/4 bg-[#10b981]/30 rounded"></div>
+                  <div class="h-2 w-full bg-[#292a2b] rounded"></div>
+                  <div class="h-2 w-5/6 bg-[#292a2b] rounded"></div>
+                  <div class="grid grid-cols-2 gap-1 pt-2">
+                    <div class="h-16 rounded bg-[#1f2021]"></div>
+                    <div class="h-16 rounded bg-[#1f2021]"></div>
+                  </div>
+                </div>
+                <div class="h-7 w-full rounded bg-[#10b981] flex items-center justify-center text-[#08090a] font-space text-xs font-semibold">
+                  Instant Reserve
+                </div>
+              </div>
+              <div class="space-y-1">
+                <h4 class="font-syne text-lg text-[#f4f4f5] font-bold">Sub-50ms Interaction Time</h4>
+                <p class="font-jakarta text-xs text-[#a1a1aa]">Zero layout shifts and instantaneous client navigation via headless Edge routing.</p>
+              </div>
+            </div>
+
+            <!-- Card 2: Interactive Real-time Search Engine (Elevated Center Card) -->
+            <div class="rounded-xl bg-[#1f2021] p-6 space-y-6 transform md:scale-105 z-20 border border-[#10b981]/40 shadow-2xl">
+              <div class="flex items-center justify-between">
+                <span class="font-space text-xs text-[#10b981] uppercase tracking-wider font-semibold">Core Search Architecture</span>
+                <span class="px-2 py-0.5 rounded bg-[#10b981] text-[#08090a] text-[10px] font-space uppercase font-bold">BUILT BY WEB CEYLON</span>
+              </div>
+              <!-- Mock Live Filter System -->
+              <div class="w-full h-64 rounded-xl bg-[#0d0e0f] p-4 space-y-3 flex flex-col justify-between border border-[#1f2328]">
+                <div class="flex items-center gap-2 bg-[#1b1c1d] px-3 py-1.5 rounded-lg text-[#f4f4f5] border border-[#1f2328]">
+                  <span class="material-symbols-outlined text-[14px] text-[#10b981]">search</span>
+                  <span class="font-space text-xs">Bentley Continental GT Colombo</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="p-2 rounded bg-[#1f2021] flex items-center justify-between text-xs">
+                    <span class="text-[#f4f4f5] font-space">Bentley GT • 2024 V8</span>
+                    <span class="text-[#10b981] font-bold font-space">$1,800/day</span>
+                  </div>
+                  <div class="p-2 rounded bg-[#1f2021] flex items-center justify-between text-xs">
+                    <span class="text-[#f4f4f5] font-space">Porsche 911 GT3 RS</span>
+                    <span class="text-[#10b981] font-bold font-space">$1,500/day</span>
+                  </div>
+                  <div class="p-2 rounded bg-[#1f2021] flex items-center justify-between text-xs">
+                    <span class="text-[#f4f4f5] font-space">Rolls-Royce Phantom VIII</span>
+                    <span class="text-[#10b981] font-bold font-space">$2,200/day</span>
+                  </div>
+                </div>
+                <div class="p-2 rounded bg-[#10b981]/15 flex items-center justify-between">
+                  <span class="text-[#10b981] font-space text-xs font-semibold">Filter: Colombo Express Pickup</span>
+                  <span class="material-symbols-outlined text-[14px] text-[#10b981]">check_circle</span>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <h4 class="font-syne text-lg text-[#f4f4f5] font-bold">Custom Algolia & MeiliSearch</h4>
+                <p class="font-jakarta text-xs text-[#a1a1aa]">Instant typoahead filtering across thousands of inventory items with 28ms execution.</p>
+              </div>
+            </div>
+
+            <!-- Card 3: Checkout Flows & Multi-Currency Telemetry -->
+            <div class="rounded-xl bg-[#1b1c1d] p-6 space-y-6 transform md:rotate-1 hover:rotate-0 transition-transform duration-500 border border-[#1f2328] shadow-xl">
+              <div class="flex items-center justify-between">
+                <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Multi-Currency Engine</span>
+                <span class="px-2 py-0.5 rounded bg-[#10b981]/20 text-[#10b981] text-[10px] font-space uppercase font-bold">BUILT BY WEB CEYLON</span>
+              </div>
+              <!-- Mock Checkout Card -->
+              <div class="w-full h-64 rounded-xl bg-[#0d0e0f] p-4 space-y-3 flex flex-col justify-between border border-[#1f2328]">
+                <div class="flex items-center justify-between">
+                  <span class="font-space text-xs text-[#a1a1aa] uppercase">Payment Settlement</span>
+                  <span class="font-space text-xs text-[#d4af37] font-bold">LIVE STAGING</span>
+                </div>
+                <div class="p-3 rounded bg-[#1b1c1d] space-y-1 border border-[#1f2328]">
+                  <div class="flex justify-between text-xs font-space">
+                    <span class="text-[#a1a1aa]">Subtotal</span>
+                    <span class="text-[#f4f4f5]">$3,200.00 USD</span>
+                  </div>
+                  <div class="flex justify-between text-xs font-space">
+                    <span class="text-[#a1a1aa]">Sri Lanka Gateway (LKR)</span>
+                    <span class="text-[#10b981]">₨962,500 LKR</span>
+                  </div>
+                  <div class="flex justify-between text-xs font-space font-bold pt-1 border-t border-[#1f2328]">
+                    <span class="text-[#f4f4f5]">Escrow Deposit</span>
+                    <span class="text-[#10b981]">Secured via Stripe</span>
+                  </div>
+                </div>
+                <div class="h-8 rounded bg-[#292a2b] flex items-center justify-center gap-1 text-[#f4f4f5] text-xs font-space">
+                  <span class="material-symbols-outlined text-[14px] text-[#10b981]">security</span>
+                  <span>End-to-End Encrypted Tokenization</span>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <h4 class="font-syne text-lg text-[#f4f4f5] font-bold">Zero-Friction Checkout</h4>
+                <p class="font-jakarta text-xs text-[#a1a1aa]">Seamless cross-border payment rails designed for international clients transacting in Ceylon.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 4. SRI LANKAN ARTISAN & DIGITAL CRAFTSMANSHIP TRANSITION         -->
+      <!-- Featuring traditional Sri Lankan teak mask Chiaroscuro shot      -->
+      <!-- ================================================================= -->
+      <section class="max-w-[1680px] mx-auto w-full px-4 md:px-12 pt-24">
+        <div class="relative rounded-2xl overflow-hidden bg-[#050607] border border-[#1f2328] shadow-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[600px] items-center">
+            <!-- Mask Editorial Image Frame -->
+            <div class="lg:col-span-6 relative h-[380px] lg:h-full w-full overflow-hidden flex items-center justify-center">
+              <img alt="Traditional Sri Lankan carved Kolam devil dance wooden mask museum exhibit" class="w-full h-full object-cover object-center filter contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrhO5YmdE4DtC-YjKlwKbApwfSTZFNcgtp9OGa1QwngqGYeA50lVo2FQamudWemcHgr51rIP8y9k2-PJpz8xzBgV70XhBE2drLUWSADmkaJ1Jdc061_fbiXiyUfQVWn89GUQ67sEFPC6YbHvRVVSq1YPCBVJW_wO53AM9YAKnSA0r-6RE3kLOdSQFL9NqjDjhASqPBUWPEFTSIlugJet8gxaacwGoqFrr3T22VWtdkI3sUmjq6dR6f"/>
+              <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-transparent via-[#050607]/40 to-[#050607] pointer-events-none"></div>
+            </div>
+            
+            <!-- Typographic Narrative Column -->
+            <div class="lg:col-span-6 p-6 md:p-12 space-y-6 relative z-10">
+              <div class="flex items-center gap-3">
+                <span class="font-jakarta text-base text-[#10b981] font-semibold">අපේ මුල්. අපේ නිර්මාණ.</span>
+                <span class="text-[#3c4a42]">•</span>
+                <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-widest">Heritage Ethos</span>
+              </div>
+              <h2 class="font-syne text-3xl md:text-5xl text-[#f4f4f5] font-bold tracking-tight leading-tight">
+                Craftsmanship is in our roots.
+              </h2>
+              <p class="font-jakarta text-base md:text-lg text-[#a1a1aa] leading-relaxed">
+                From century-old Kolam woodcarving mastery and Geoffrey Bawa’s restrained tropical brutalism to modern reactive digital architecture, we believe world-class work begins with radical attention to detail.
+              </p>
+              <div class="p-6 rounded-xl bg-[#121315] border border-[#1f2328] space-y-2">
+                <p class="font-jakarta text-sm md:text-base text-[#f4f4f5] italic">
+                  “Architecture is not simply about building walls; it is about creating emotional resonance in physical and digital space.”
+                </p>
+                <span class="block font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold">Colombo Studio Creed — 2025</span>
+              </div>
+              <div class="grid grid-cols-2 gap-6 pt-2">
+                <div>
+                  <span class="font-syne text-xl text-[#f4f4f5] font-bold">100% Hand-Crafted</span>
+                  <p class="font-jakarta text-xs text-[#a1a1aa] mt-1">No generic themes or bloated drag-and-drop builders.</p>
+                </div>
+                <div>
+                  <span class="font-syne text-xl text-[#10b981] font-bold">Colombo 07 Based</span>
+                  <p class="font-jakarta text-xs text-[#a1a1aa] mt-1">Operating in sync with APAC, EMEA, and Americas time zones.</p>
+                </div>
+              </div>
+              <div class="pt-2">
+                <a href="heritage-and-vision.html" class="inline-flex items-center gap-2 text-[#10b981] font-space text-xs uppercase tracking-wider font-semibold hover:underline">
+                  <span>Read Full Heritage & Vision Story</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 5. ESSENTIAL CAPABILITIES SUMMARY                                 -->
+      <!-- ================================================================= -->
+      <section class="max-w-[1680px] mx-auto w-full px-4 md:px-12 pt-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="font-space text-xs text-[#10b981] uppercase tracking-widest block mb-2 font-semibold">Studio Capabilities</span>
+            <h2 class="font-syne text-3xl md:text-5xl text-[#f4f4f5] font-bold tracking-tight">What We Build</h2>
+          </div>
+          <a href="services.html" class="font-space text-xs text-[#10b981] uppercase tracking-widest hover:underline flex items-center gap-1 font-semibold">
+            <span>Explore All Capabilities & Scope Estimator</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Service 1 -->
+          <div class="p-6 rounded-2xl bg-[#0d0e0f] border border-[#1f2328] hover:border-[#10b981]/40 transition-all duration-300 space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#10b981]/15 text-[#10b981] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]">web</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-syne text-xl text-[#f4f4f5] font-bold">High-Performance Websites</h3>
+              <p class="font-jakarta text-xs text-[#a1a1aa] leading-relaxed">
+                Awwwards-tier visual showcases, bespoke portfolio galleries, and lightning-fast corporate flagship sites.
+              </p>
+            </div>
+            <div class="font-space text-xs text-[#10b981] font-semibold uppercase tracking-wider">Next.js • Astro • WebGL</div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="p-6 rounded-2xl bg-[#0d0e0f] border border-[#1f2328] hover:border-[#10b981]/40 transition-all duration-300 space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#10b981]/15 text-[#10b981] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]">dataset</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-syne text-xl text-[#f4f4f5] font-bold">Custom Systems & Web Apps</h3>
+              <p class="font-jakarta text-xs text-[#a1a1aa] leading-relaxed">
+                Complex internal portals, reservation systems, IoT dashboards, and real-time operations software.
+              </p>
+            </div>
+            <div class="font-space text-xs text-[#10b981] font-semibold uppercase tracking-wider">React • Node • Go • PostgreSQL</div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="p-6 rounded-2xl bg-[#0d0e0f] border border-[#1f2328] hover:border-[#10b981]/40 transition-all duration-300 space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#10b981]/15 text-[#10b981] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-syne text-xl text-[#f4f4f5] font-bold">Global E-Commerce</h3>
+              <p class="font-jakarta text-xs text-[#a1a1aa] leading-relaxed">
+                Headless luxury storefronts, multi-currency checkouts, bespoke product configurators, and inventory sync.
+              </p>
+            </div>
+            <div class="font-space text-xs text-[#10b981] font-semibold uppercase tracking-wider">Shopify Plus • Stripe • Medusa</div>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="p-6 rounded-2xl bg-[#0d0e0f] border border-[#1f2328] hover:border-[#10b981]/40 transition-all duration-300 space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#10b981]/15 text-[#10b981] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]">sync_alt</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-syne text-xl text-[#f4f4f5] font-bold">Business Automation & APIs</h3>
+              <p class="font-jakarta text-xs text-[#a1a1aa] leading-relaxed">
+                Third-party integration pipelines, WhatsApp business dispatch bots, ERP connections, and custom webhooks.
+              </p>
+            </div>
+            <div class="font-space text-xs text-[#10b981] font-semibold uppercase tracking-wider">REST • GraphQL • Serverless</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 6. CLIENT TESTIMONIALS & REPUTATION                              -->
+      <!-- ================================================================= -->
+      <section class="max-w-[1680px] mx-auto w-full px-4 md:px-12 pt-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="p-8 rounded-2xl bg-[#0d0e0f] border border-[#1f2328] shadow-lg space-y-6 flex flex-col justify-between">
+            <p class="font-jakarta text-base md:text-lg text-[#f4f4f5] leading-relaxed italic">
+              “WEB CEYLON completely redefined our luxury positioning in the automotive sector. Inquiries from high-net-worth international travelers surged +240% within six weeks of deployment. Their taste level is peerless.”
+            </p>
+            <div class="flex items-center gap-4 pt-2 border-t border-[#1f2328]">
+              <div class="w-12 h-12 rounded-full bg-[#10b981]/20 text-[#10b981] flex items-center justify-center font-syne text-lg font-bold">K</div>
+              <div>
+                <span class="block font-syne text-base text-[#f4f4f5] font-bold">Kavinda Senanayake</span>
+                <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Managing Director, CarRents.lk</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="p-8 rounded-2xl bg-[#0d0e0f] border border-[#1f2328] shadow-lg space-y-6 flex flex-col justify-between">
+            <p class="font-jakarta text-base md:text-lg text-[#f4f4f5] leading-relaxed italic">
+              “Building an IoT charging mesh map across Sri Lanka's geography required intense technical precision. WEB CEYLON delivered a telemetry dashboard that performs with zero perceptible lag. Highly recommended.”
+            </p>
+            <div class="flex items-center gap-4 pt-2 border-t border-[#1f2328]">
+              <div class="w-12 h-12 rounded-full bg-[#06b6d4]/20 text-[#06b6d4] flex items-center justify-center font-syne text-lg font-bold">D</div>
+              <div>
+                <span class="block font-syne text-base text-[#f4f4f5] font-bold">Dr. Dinesh Perera</span>
+                <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Chief Technology Officer, ChargeUp Ceylon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 7. CINEMATIC STUDIO CTA                                          -->
+      <!-- ================================================================= -->
+      <section class="max-w-[1680px] mx-auto w-full px-4 md:px-12 py-24" id="contact-studio">
+        <div class="rounded-3xl bg-gradient-to-b from-[#1b1c1d] to-[#0d0e0f] p-8 md:p-16 text-center relative overflow-hidden border border-[#1f2328] shadow-2xl">
+          <div class="ambient-glow-emerald -bottom-24 left-1/2 -translate-x-1/2 w-[500px] h-[250px]"></div>
+          
+          <div class="max-w-3xl mx-auto space-y-6 relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0d0e0f] border border-[#1f2328] text-[#f4f4f5]">
+              <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+              <span class="font-space text-xs uppercase tracking-widest">Colombo 07, Sri Lanka 🇱🇰 • Now Booking Q2/Q3 2026</span>
+            </div>
+            
+            <h2 class="font-syne text-4xl md:text-6xl text-[#f4f4f5] font-bold tracking-tight leading-tight">
+              Ready to build something <br/><span class="text-[#10b981] italic">worth showing off?</span>
+            </h2>
+            <p class="font-jakarta text-base md:text-lg text-[#a1a1aa] max-w-xl mx-auto">
+              Tell us what you are building. We'll engineer an unforgettable digital experience that commands attention and compounds revenue.
+            </p>
+            
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+              <a class="inline-flex items-center gap-2 px-8 py-4 rounded-xl btn-emerald font-space text-xs uppercase tracking-wider font-bold" href="contact.html">
+                <span>Start a Project</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+              <a class="inline-flex items-center gap-2 px-8 py-4 rounded-xl btn-secondary font-space text-xs uppercase tracking-wider font-medium" href="services.html#estimator">
+                <span class="material-symbols-outlined text-[18px]">calculate</span>
+                <span>Calculate Scope & Estimate</span>
+              </a>
+            </div>
+
+            <div class="pt-6 flex flex-wrap items-center justify-center gap-6 text-[#a1a1aa] font-space text-xs uppercase tracking-wider border-t border-[#1f2328]">
+              <span>Direct: hello@webceylon.com</span>
+              <span>•</span>
+              <span>+94 11 254 8900</span>
+              <span>•</span>
+              <span>Ward Place, Colombo 07</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- DYNAMIC CASE STUDY DOSSIER DRAWER (MODAL)                          -->
+  <!-- ================================================================= -->
+  <div class="fixed inset-0 z-50 transform translate-y-full transition-transform duration-500 ease-in-out bg-black/85 backdrop-blur-2xl flex flex-col justify-end" id="caseStudyDrawer">
+    <!-- Click backdrop to close -->
+    <div class="absolute inset-0 cursor-pointer" onclick="closeCaseStudy()"></div>
+    
+    <!-- Modal Card Surface -->
+    <div class="relative w-full max-w-6xl mx-auto bg-[#0d0e0f] rounded-t-3xl p-6 md:p-12 max-h-[90vh] overflow-y-auto shadow-2xl z-10 border-t border-[#1f2328]">
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-6 border-b border-[#1f2328]">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></span>
+          <span id="csCategory" class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold">Case Study Architecture Dossier</span>
+        </div>
+        <button class="w-10 h-10 rounded-full bg-[#1f2021] flex items-center justify-center hover:bg-[#292a2b] text-[#f4f4f5] transition-colors" onclick="closeCaseStudy()">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Drawer Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Client Showcase Dossier</span>
+            <h3 id="csTitle" class="font-syne text-2xl md:text-3xl text-[#f4f4f5] font-bold tracking-tight mt-1">
+              CarRents.lk — The Luxury Automotive Marketplace
+            </h3>
+          </div>
+          
+          <div class="space-y-2">
+            <h4 class="font-syne text-base text-[#f4f4f5] font-semibold uppercase tracking-wider">The Challenge</h4>
+            <p id="csChallenge" class="font-jakarta text-sm md:text-base text-[#a1a1aa] leading-relaxed">
+              The Sri Lankan exotic car rental market suffered from fragmented WhatsApp bookings and unverified fleet availability.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-syne text-base text-[#f4f4f5] font-semibold uppercase tracking-wider">The Architecture & Solution</h4>
+            <p id="csSolution" class="font-jakarta text-sm md:text-base text-[#a1a1aa] leading-relaxed">
+              WEB CEYLON designed a bespoke booking engine equipped with calendar token locks, automated passport verification, escrow deposit handling, and real-time fleet telematics.
+            </p>
+          </div>
+
+          <!-- Tech stack chips -->
+          <div class="space-y-2 pt-2">
+            <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Engineered Tech Stack</span>
+            <div id="csStack" class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded bg-[#1f2021] text-[#10b981] font-space text-xs font-semibold">Next.js 14 App Router</span>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center gap-4 border-t border-[#1f2328]">
+            <a id="csLiveLink" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-semibold" href="#" target="_blank" rel="noopener">
+              <span>Explore Live Platform</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+            </a>
+            <button class="font-space text-xs text-[#a1a1aa] uppercase hover:text-white" onclick="closeCaseStudy()">
+              Close Dossier
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="rounded-2xl overflow-hidden bg-[#1f2021] border border-[#1f2328]">
+            <img id="csImage" alt="Case study preview" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUHXzQ80mfW28ygd8hlbk2UcsLgAsg-C5jHa9UwPn9e_377clk9DhRth-br2reztmVG6pxU5xnOh2V-vc2TzrnPUWYEoCClZFdThhH4K2k79VFinGN8wUZLAC1vnm3eGQmJaXsf85ka9YcW5OsgiIwd36u1eNXreoGHuaqd3nk5Gvy_aMhqR3CvniooPGL3Zp49XzenlnIFqh5W9UaPfdL4MwtDyjP3GsvtXaPH3kwV5DKWsieKEsE"/>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div id="csMetrics" class="grid grid-cols-2 gap-3">
+            <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328] text-center">
+              <span class="block font-syne text-2xl text-[#10b981] font-bold">+240%</span>
+              <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Bookings Volume</span>
+            </div>
+            <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328] text-center">
+              <span class="block font-syne text-2xl text-[#d4af37] font-bold">100/100</span>
+              <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Lighthouse Perf</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- FOOTER                                                            -->
+  <!-- ================================================================= -->
+  <footer class="w-full bg-[#0d0e0f] border-t border-[#1f2328] pt-16 pb-12">
+    <div class="max-w-[1680px] mx-auto px-4 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-[#1f2328]">
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <img alt="WEB CEYLON Brandmark" class="h-8 w-auto object-contain" src="assets/brandmark.svg"/>
+          </div>
+          <p class="font-jakarta text-sm text-[#a1a1aa] max-w-md leading-relaxed">
+            Digital Experiences, Crafted in Ceylon. Engineered around high-growth businesses and discerning founders worldwide.
+          </p>
+          <div class="flex items-center gap-2 text-[#a1a1aa]">
+            <span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
+            <span class="font-space text-xs tracking-widest uppercase">Colombo 07, Sri Lanka • UTC+5:30</span>
+            <span class="font-space text-xs text-[#10b981] uppercase ml-2 live-colombo-clock">[Live IST]</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-3">
+          <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-widest block font-semibold">Architecture</span>
+          <div class="flex flex-col space-y-2">
+            <a class="font-jakarta text-xs text-[#f4f4f5] hover:text-[#10b981] transition-colors" href="index.html">Selected Work</a>
+            <a class="font-jakarta text-xs text-[#f4f4f5] hover:text-[#10b981] transition-colors" href="case-studies.html">Case Studies Archive</a>
+            <a class="font-jakarta text-xs text-[#f4f4f5] hover:text-[#10b981] transition-colors" href="services.html">Services & Pricing</a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-3">
+          <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-widest block font-semibold">Ethos & Studio</span>
+          <div class="flex flex-col space-y-2">
+            <a class="font-jakarta text-xs text-[#f4f4f5] hover:text-[#10b981] transition-colors" href="heritage-and-vision.html">Heritage & Vision</a>
+            <a class="font-jakarta text-xs text-[#f4f4f5] hover:text-[#10b981] transition-colors" href="process.html">5-Phase Methodology</a>
+            <a class="font-jakarta text-xs text-[#f4f4f5] hover:text-[#10b981] transition-colors" href="contact.html">Commence Project</a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-widest block font-semibold">Dispatch & Social</span>
+          <div class="flex flex-wrap gap-2">
+            <a class="font-space text-xs uppercase px-3 py-1.5 rounded-full bg-[#1b1c1d] border border-[#1f2328] text-[#f4f4f5] hover:bg-[#10b981] hover:text-[#08090a] transition-colors" href="https://instagram.com" target="_blank">Instagram</a>
+            <a class="font-space text-xs uppercase px-3 py-1.5 rounded-full bg-[#1b1c1d] border border-[#1f2328] text-[#f4f4f5] hover:bg-[#10b981] hover:text-[#08090a] transition-colors" href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a class="font-space text-xs uppercase px-3 py-1.5 rounded-full bg-[#1b1c1d] border border-[#1f2328] text-[#f4f4f5] hover:bg-[#10b981] hover:text-[#08090a] transition-colors" href="https://x.com" target="_blank">X (Twitter)</a>
+            <a class="font-space text-xs uppercase px-3 py-1.5 rounded-full bg-[#1b1c1d] border border-[#1f2328] text-[#f4f4f5] hover:bg-[#10b981] hover:text-[#08090a] transition-colors" href="https://github.com" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-space text-xs text-[#a1a1aa]">© 2026 WEB CEYLON Digital Studio. All rights reserved.</p>
+        <p class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Geoffrey Bawa Architectural Digital Modernism</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Controller -->
+  <script src="js/main.js"></script>
+</body>
+</html>

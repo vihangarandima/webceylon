@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Case Studies Archive — WEB CEYLON Digital Architecture</title>
+  <meta name="description" content="Explore in-depth architectural case studies of systems engineered by WEB CEYLON across automotive, EV IoT meshes, luxury hospitality, and high-concurrency ticketing."/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            "syne": ["Syne", "sans-serif"],
+            "jakarta": ["Plus Jakarta Sans", "sans-serif"],
+            "space": ["Space Grotesk", "monospace", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+
+<body class="bg-[#08090a] font-jakarta text-[#e4e4e7] min-h-screen selection:bg-[#10b981] selection:text-[#08090a] antialiased">
+  <div class="grain-overlay"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 px-4 md:px-12 pt-4">
+    <div class="h-16 max-w-[1680px] mx-auto bg-[#0d0e0f]/85 backdrop-blur-2xl rounded-full px-6 flex items-center justify-between border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+      <a href="index.html" class="flex items-center gap-3">
+        <img alt="WEB CEYLON Brandmark" class="h-8 w-auto object-contain" src="assets/brandmark.svg"/>
+      </a>
+
+      <nav class="hidden xl:flex items-center gap-8">
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="index.html">Selected Work</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#10b981] font-semibold transition-colors" href="case-studies.html">Case Studies</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="services.html">Services & Estimator</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="heritage-and-vision.html">Heritage & Vision</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="process.html">Process</a>
+        <a class="font-space text-xs uppercase tracking-widest text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1d] border border-[#1f2328]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+          <span class="font-space text-[11px] tracking-wider text-[#a1a1aa] live-colombo-clock">[Live IST]</span>
+        </div>
+        <a class="hidden lg:inline-flex items-center gap-2 px-5 py-2 rounded-full btn-emerald font-space text-xs uppercase tracking-wider" href="contact.html">
+          <span>Start a Project</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+        <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 rounded-full bg-[#1f2021] text-[#f4f4f5] flex items-center justify-center hover:bg-[#292a2b]">
+          <span class="material-symbols-outlined text-[22px]">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobileDrawerBackdrop" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50"></div>
+  <div id="mobileDrawer" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#0d0e0f] border-l border-[#1f2328] z-50 transform translate-x-full transition-transform duration-400 ease-in-out p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-8 border-b border-[#1f2328]">
+        <img alt="WEB CEYLON Brandmark" class="h-7 w-auto" src="assets/brandmark.svg"/>
+        <button id="closeMobileDrawer" class="w-9 h-9 rounded-full bg-[#1f2021] flex items-center justify-center text-[#a1a1aa] hover:text-white">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col space-y-5 pt-8 font-space text-sm uppercase tracking-widest">
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="index.html">Selected Work</a>
+        <a class="text-[#10b981] font-semibold" href="case-studies.html">Case Studies</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="services.html">Services & Estimator</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="heritage-and-vision.html">Heritage & Vision</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="process.html">Process</a>
+        <a class="text-[#a1a1aa] hover:text-white transition-colors" href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="space-y-4 pt-6 border-t border-[#1f2328]">
+      <a href="contact.html" class="w-full py-3 rounded-xl btn-emerald flex items-center justify-center gap-2 font-space text-xs uppercase tracking-wider">
+        <span>Commence Brief</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  <main class="w-full pt-28 pb-24">
+    <div class="max-w-[1680px] mx-auto px-4 md:px-12">
+      
+      <!-- PAGE HERO -->
+      <div class="space-y-4 pb-16 border-b border-[#1f2328]">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1d] border border-[#1f2328]">
+          <span class="w-2 h-2 rounded-full bg-[#10b981]"></span>
+          <span class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold">Architectural Dossiers & Technical Audits</span>
+        </div>
+        <h1 class="font-syne text-4xl md:text-7xl text-[#f4f4f5] font-extrabold tracking-tight">
+          Engineering Behind <br/><span class="text-[#10b981] italic">The Aesthetic.</span>
+        </h1>
+        <p class="font-jakarta text-base md:text-xl text-[#a1a1aa] max-w-3xl leading-relaxed">
+          Explore the business challenges, technical architectures, database paradigms, and audited conversion metrics behind our most ambitious digital platforms.
+        </p>
+      </div>
+
+      <!-- DOSSIERS GRID -->
+      <div class="space-y-20 pt-16">
+
+        <!-- CASE STUDY 01: CarRents.lk -->
+        <article class="rounded-3xl bg-[#0d0e0f] border border-[#1f2328] p-6 md:p-12 shadow-2xl space-y-8">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#1f2328]">
+            <div class="space-y-1">
+              <span class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold">Dossier 01 • Automotive Marketplace</span>
+              <h2 class="font-syne text-2xl md:text-4xl text-[#f4f4f5] font-bold">CarRents.lk — Premier Fleet Architecture of Sri Lanka</h2>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-[#1b1c1d] text-[#d4af37] border border-[#1f2328] font-space text-xs uppercase">Awwwards Nominee</span>
+              <button class="px-5 py-2.5 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-semibold" onclick="openCaseStudy('carrents')">Inspect Interactive Modal</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 rounded-2xl overflow-hidden bg-[#1f2021] border border-[#1f2328]">
+              <img alt="CarRents.lk platform showcase" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUHXzQ80mfW28ygd8hlbk2UcsLgAsg-C5jHa9UwPn9e_377clk9DhRth-br2reztmVG6pxU5xnOh2V-vc2TzrnPUWYEoCClZFdThhH4K2k79VFinGN8wUZLAC1vnm3eGQmJaXsf85ka9YcW5OsgiIwd36u1eNXreoGHuaqd3nk5Gvy_aMhqR3CvniooPGL3Zp49XzenlnIFqh5W9UaPfdL4MwtDyjP3GsvtXaPH3kwV5DKWsieKEsE"/>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">The Strategic Problem</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  High-net-worth foreign visitors and diaspora travelers faced extreme distrust with manual cash payments and unverified fleet conditions. Middlemen captured up to 35% fees.
+                </p>
+              </div>
+
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">Architectural Solution</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Engineered an instant booking portal utilizing Next.js 14 server actions, automated ID and international driver license OCR verification, multi-currency Stripe Escrow holds, and vehicle telematics GPS telemetry.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#10b981] font-bold">+240%</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Direct Bookings Lift</span>
+                </div>
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#d4af37] font-bold">28ms</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Typoahead Speed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE STUDY 02: ChargeUp EV Ceylon -->
+        <article class="rounded-3xl bg-[#0d0e0f] border border-[#1f2328] p-6 md:p-12 shadow-2xl space-y-8">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#1f2328]">
+            <div class="space-y-1">
+              <span class="font-space text-xs text-[#06b6d4] uppercase tracking-widest font-semibold">Dossier 02 • IoT & Smart Grid Mesh</span>
+              <h2 class="font-syne text-2xl md:text-4xl text-[#f4f4f5] font-bold">ChargeUp EV Ceylon — Island-Wide EV Routing Platform</h2>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-[#1b1c1d] text-[#06b6d4] border border-[#1f2328] font-space text-xs uppercase">National Green Award</span>
+              <button class="px-5 py-2.5 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-semibold" onclick="openCaseStudy('chargeup')">Inspect Interactive Modal</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 rounded-2xl overflow-hidden bg-[#1f2021] border border-[#1f2328]">
+              <img alt="ChargeUp EV dashboard" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc2JCg2pZ431Wm-gcUI7Qq7CyeogBxzmLFi_d2bj7VvIJq66OzZhLvkN4A6jHNxWHOOohsBZDiAEjjwrU8GVkHut5STcYe8I6sJ-keXrO30hWSj0uyfL-sSNWLTgHouGVDRoPz-TQhX7O1u_PzLxaR-fO8AlR9kqxlgKTnq4JpM5Mz7jOHEfBf2ABuaNeKmmjm6xYZwi18gGs3wy6cB-yoHCY35azJuiq7XrVVaL2PH4IJ4lQSoYGp"/>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">The Strategic Problem</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Rapid EV adoption in Sri Lanka outpaced station visibility. Drivers faced long charging queues in remote hill country areas without live kW load indicators.
+                </p>
+              </div>
+
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">Architectural Solution</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Deployed a Go-based microservice mesh consuming OCPP charger telemetry, paired with TimescaleDB time-series storage and sub-85ms client WebSockets for real-time station reservation.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#06b6d4] font-bold">140+</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Grid Nodes Synced</span>
+                </div>
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#10b981] font-bold">99.98%</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Operational Uptime</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE STUDY 03: Lanka Luxe Heritage Stays -->
+        <article class="rounded-3xl bg-[#0d0e0f] border border-[#1f2328] p-6 md:p-12 shadow-2xl space-y-8">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#1f2328]">
+            <div class="space-y-1">
+              <span class="font-space text-xs text-[#d4af37] uppercase tracking-widest font-semibold">Dossier 03 • Luxury Hospitality</span>
+              <h2 class="font-syne text-2xl md:text-4xl text-[#f4f4f5] font-bold">Lanka Luxe Heritage Stays — Bawa Villa Booking System</h2>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-[#1b1c1d] text-[#d4af37] border border-[#1f2328] font-space text-xs uppercase">Awwwards Site of the Day</span>
+              <button class="px-5 py-2.5 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-semibold" onclick="openCaseStudy('lankaluxe')">Inspect Interactive Modal</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 rounded-2xl overflow-hidden bg-[#1f2021] border border-[#1f2328]">
+              <img alt="Lanka Luxe Villa" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNZRc53117CP1ZYCxrYXiRrlB6__kNGaLYqDp2UhdOLBHGyYJHP4txTuF8GNZdYntsUNSjWInIWdGI2Ceucke_JUh_qLHj1IObuPzrykRCR8hZ_m2Kpk2kT5skL6-9eSI4IT-sCP93kSoebJjlh1IEEO5FyTaMwctgbwOkr99urfI9X1pPBaqvlerE0OOsVEvA_QAjP_SJppb3y0bjZEbUuhJ4rfgMZCLPKoXFLzL3fKSxInJe1OUm"/>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">The Strategic Problem</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Boutique luxury estates in Kandy and Galle were losing brand equity and 25% revenue cuts to online travel agents (OTAs).
+                </p>
+              </div>
+
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">Architectural Solution</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Created an editorial digital gallery using Sanity CMS and Next.js 14 with integrated bespoke culinary curation and private transport booking directly synced to hotel PMS.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#10b981] font-bold">-68%</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">OTA Commission Cut</span>
+                </div>
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#d4af37] font-bold">+310%</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Direct Revenue Lift</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE STUDY 04: Mayura Ceylon Spices -->
+        <article class="rounded-3xl bg-[#0d0e0f] border border-[#1f2328] p-6 md:p-12 shadow-2xl space-y-8">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#1f2328]">
+            <div class="space-y-1">
+              <span class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold">Dossier 04 • Headless E-Commerce</span>
+              <h2 class="font-syne text-2xl md:text-4xl text-[#f4f4f5] font-bold">Mayura Ceylon Spices — Global DTC Export Storefront</h2>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-[#1b1c1d] text-[#10b981] border border-[#1f2328] font-space text-xs uppercase">Best Headless DTC</span>
+              <button class="px-5 py-2.5 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-semibold" onclick="openCaseStudy('mayura')">Inspect Interactive Modal</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 rounded-2xl overflow-hidden bg-[#1f2021] border border-[#1f2328]">
+              <img alt="Mayura Spices Product Packaging" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUXmvrabBbX0kW2c7e-K2gDoBpjchwAHo0fjxu4nvIXjQ7lGbIkPV1RcuanBeuH9hMT3m3OadszWuSQcmcEL93WGo4ZfH0g3MrHOjMA9zlVsnOjXzhPom63IwqMn5ak-x74lNp4DOAqLxP74kjA0XSRx0wOkX0HVTCKwpfeDeOVYRd7f_9TuyWCapDDpVonaoockwYPpmBGHOVQQB8S0s_IeN0Bva9l4QxhOKv_GGpA4WiwZT9nyVE"/>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">The Strategic Problem</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Authentic southern Ceylon Alba cinnamon producers were commoditized by global repackagers with zero provenance traceability.
+                </p>
+              </div>
+
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">Architectural Solution</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Architected a Shopify Plus headless store with 16 localized international currencies, automated customs tax duty estimation, and interactive 3D harvest origin maps.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#10b981] font-bold">+195%</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Global DTC Sales</span>
+                </div>
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#d4af37] font-bold">14.2%</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Cart Abandonment</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE STUDY 05: Ceylon Symphony Pavilion -->
+        <article class="rounded-3xl bg-[#0d0e0f] border border-[#1f2328] p-6 md:p-12 shadow-2xl space-y-8">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#1f2328]">
+            <div class="space-y-1">
+              <span class="font-space text-xs text-[#d4af37] uppercase tracking-widest font-semibold">Dossier 05 • FinTech & High Concurrency</span>
+              <h2 class="font-syne text-2xl md:text-4xl text-[#f4f4f5] font-bold">Ceylon Symphony Pavilion — 3D Ticket Distribution Engine</h2>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-[#1b1c1d] text-[#d4af37] border border-[#1f2328] font-space text-xs uppercase">Enterprise Award</span>
+              <button class="px-5 py-2.5 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-semibold" onclick="openCaseStudy('symphony')">Inspect Interactive Modal</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 rounded-2xl overflow-hidden bg-[#1f2021] border border-[#1f2328]">
+              <img alt="Symphony auditorium interior" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmQOSbp6qq4IeExU_dYssM2MAeSUzlrV5VYKRIT9p4uslChHVO0SY76LWhJ3JJmu6791KHw15BHF2ZleSPB2DafP6XfTu22D5FkHKVdDiIenJhwf2eEzQ5Zv47xZCEHN6cUOBItDPFAIfRRtoTRbWj6mWtrGxAoPzE1X6u-8W5zSkHQfeZ4AHIAMo5NNGYi7jeriPs-J_KAUG2ny50bG_rJLFcj_EUmGGgcz5CFXgXt8VAhx18honk"/>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">The Strategic Problem</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  High-profile orchestra performances suffered severe race condition collisions during major 10,000+ seat release drops.
+                </p>
+              </div>
+
+              <div class="space-y-2">
+                <h3 class="font-syne text-lg text-[#f4f4f5] font-bold uppercase tracking-wider">Architectural Solution</h3>
+                <p class="font-jakarta text-sm text-[#a1a1aa] leading-relaxed">
+                  Created an interactive SVG vector seating chart with distributed Redis lease token locks and serverless queue throttling.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#10b981] font-bold">12,000</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Req/Sec Handled</span>
+                </div>
+                <div class="p-4 rounded-xl bg-[#1b1c1d] border border-[#1f2328]">
+                  <span class="block font-syne text-2xl text-[#d4af37] font-bold">18ms</span>
+                  <span class="font-space text-[10px] text-[#a1a1aa] uppercase">Seat Lock Latency</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CASE STUDY DOSSIER MODAL DRAWER -->
+  <div class="fixed inset-0 z-50 transform translate-y-full transition-transform duration-500 ease-in-out bg-black/85 backdrop-blur-2xl flex flex-col justify-end" id="caseStudyDrawer">
+    <div class="absolute inset-0 cursor-pointer" onclick="closeCaseStudy()"></div>
+    <div class="relative w-full max-w-6xl mx-auto bg-[#0d0e0f] rounded-t-3xl p-6 md:p-12 max-h-[90vh] overflow-y-auto shadow-2xl z-10 border-t border-[#1f2328]">
+      <div class="flex items-center justify-between pb-6 border-b border-[#1f2328]">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></span>
+          <span id="csCategory" class="font-space text-xs text-[#10b981] uppercase tracking-widest font-semibold">Case Study Architecture Dossier</span>
+        </div>
+        <button class="w-10 h-10 rounded-full bg-[#1f2021] flex items-center justify-center hover:bg-[#292a2b] text-[#f4f4f5]" onclick="closeCaseStudy()">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Client Showcase Dossier</span>
+            <h3 id="csTitle" class="font-syne text-2xl md:text-3xl text-[#f4f4f5] font-bold tracking-tight mt-1">CarRents.lk</h3>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-syne text-base text-[#f4f4f5] font-semibold uppercase tracking-wider">The Challenge</h4>
+            <p id="csChallenge" class="font-jakarta text-sm md:text-base text-[#a1a1aa] leading-relaxed"></p>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-syne text-base text-[#f4f4f5] font-semibold uppercase tracking-wider">The Architecture & Solution</h4>
+            <p id="csSolution" class="font-jakarta text-sm md:text-base text-[#a1a1aa] leading-relaxed"></p>
+          </div>
+          <div class="space-y-2 pt-2">
+            <span class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider block">Engineered Tech Stack</span>
+            <div id="csStack" class="flex flex-wrap gap-2"></div>
+          </div>
+          <div class="pt-4 flex items-center gap-4 border-t border-[#1f2328]">
+            <a id="csLiveLink" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg btn-emerald font-space text-xs uppercase tracking-wider font-semibold" href="#" target="_blank" rel="noopener">
+              <span>Explore Live Platform</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+            </a>
+            <button class="font-space text-xs text-[#a1a1aa] uppercase hover:text-white" onclick="closeCaseStudy()">Close Dossier</button>
+          </div>
+        </div>
+        <div class="lg:col-span-5 space-y-6">
+          <div class="rounded-2xl overflow-hidden bg-[#1f2021] border border-[#1f2328]">
+            <img id="csImage" alt="Case study preview" class="w-full h-auto object-cover" src=""/>
+          </div>
+          <div id="csMetrics" class="grid grid-cols-2 gap-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-[#0d0e0f] border-t border-[#1f2328] pt-16 pb-12">
+    <div class="max-w-[1680px] mx-auto px-4 md:px-12">
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-space text-xs text-[#a1a1aa]">© 2026 WEB CEYLON Digital Studio. All rights reserved.</p>
+        <p class="font-space text-xs text-[#a1a1aa] uppercase tracking-wider">Geoffrey Bawa Architectural Digital Modernism</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
