@@ -9,6 +9,8 @@ import Process from './pages/Process';
 import HeritageAndVision from './pages/HeritageAndVision';
 import Contact from './pages/Contact';
 
+import DirectContactBar from './components/DirectContactBar';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -21,7 +23,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#08090a] text-[#f4f4f5] selection:bg-[#10b981] selection:text-[#08090a]">
+    <div className="flex flex-col min-h-screen bg-[#0c101c] text-[#f8fafc] selection:bg-[#f97316] selection:text-white">
       <ScrollToTop />
       <Navbar />
       <main className="flex-grow">
@@ -36,6 +38,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <DirectContactBar />
     </div>
   );
 }

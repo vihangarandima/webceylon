@@ -41,7 +41,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-nav border-b border-[#1f2328]">
+    <header className="sticky top-0 z-50 w-full glass-nav-sunset">
       <div className="max-w-[1680px] mx-auto px-4 md:px-12 h-20 flex items-center justify-between">
         
         {/* Brandmark / Logo */}
@@ -59,10 +59,10 @@ export default function Navbar() {
             <Link
               key={link.path}
               to={link.path}
-              className={`px-3.5 py-2 rounded-lg text-xs font-space tracking-wider uppercase transition-all duration-200 ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-space tracking-wider uppercase transition-all duration-200 ${
                 isActive(link.path)
-                  ? 'bg-[#1b1c1d] text-[#10b981] border border-[#1f2328] font-semibold'
-                  : 'text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#121315]'
+                  ? 'bg-gradient-to-r from-[#f97316]/20 to-[#eab308]/20 text-[#f97316] font-bold border border-[#f97316]/40 shadow-sm'
+                  : 'text-[#94a3b8] hover:text-[#f8fafc] hover:bg-white/5 font-medium'
               }`}
             >
               {link.name}
@@ -70,19 +70,27 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Live Colombo Time & Action CTA */}
-        <div className="hidden md:flex items-center gap-5">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#121315] border border-[#1f2328]">
+        {/* Live Colombo Time & Direct Hotline Action */}
+        <div className="hidden md:flex items-center gap-4">
+          <a
+            href="tel:0702434288"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-[#f97316]/20 border border-white/10 hover:border-[#f97316]/50 text-white font-space text-xs tracking-wider transition-all"
+          >
             <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-            <Clock className="w-3.5 h-3.5 text-[#10b981]" />
-            <span className="font-space text-xs text-[#a1a1aa] tracking-widest uppercase">
-              Colombo {colomboTime} <span className="text-[#10b981]">IST</span>
+            <span className="text-[#94a3b8]">Hotline:</span>
+            <span className="font-bold text-[#f97316]">070 243 4288</span>
+          </a>
+
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+            <Clock className="w-3.5 h-3.5 text-[#f97316]" />
+            <span className="font-space text-xs text-[#cbd5e1] tracking-wider uppercase">
+              {colomboTime} <span className="text-[#f97316] font-bold">IST</span>
             </span>
           </div>
 
           <Link
             to="/contact"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#10b981] hover:bg-[#4edea3] text-[#08090a] font-space text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-lg shadow-[#10b981]/20 hover:shadow-[#10b981]/40"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#f97316] via-[#ea580c] to-[#c2410c] hover:opacity-95 text-white font-space text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-lg shadow-[#f97316]/25 hover:shadow-xl hover:scale-105"
           >
             <span>Start a Project</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -93,7 +101,7 @@ export default function Navbar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation menu"
-          className="lg:hidden p-2 rounded-lg bg-[#1b1c1d] border border-[#1f2328] text-[#f4f4f5] hover:text-[#10b981] focus:outline-none"
+          className="lg:hidden p-2.5 rounded-xl bg-white/10 border border-white/10 text-white focus:outline-none"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -101,17 +109,17 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="lg:hidden border-b border-[#1f2328] bg-[#0d0e0f] px-6 py-6 space-y-4 animate-in slide-in-from-top duration-200">
-          <div className="flex items-center justify-between pb-4 border-b border-[#1f2328]">
+        <div className="lg:hidden border-b border-white/10 bg-[#0c101c] px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top duration-200">
+          <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-              <span className="font-space text-xs text-[#a1a1aa] tracking-wider uppercase">
+              <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse"></span>
+              <span className="font-space text-xs text-[#cbd5e1] tracking-wider uppercase">
                 Colombo {colomboTime} IST
               </span>
             </div>
           </div>
 
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-1.5">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -119,8 +127,8 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`px-4 py-3 rounded-xl text-sm font-space uppercase tracking-wider transition-colors ${
                   isActive(link.path)
-                    ? 'bg-[#1b1c1d] text-[#10b981] border border-[#1f2328] font-bold'
-                    : 'text-[#a1a1aa] hover:bg-[#121315] hover:text-[#f4f4f5]'
+                    ? 'bg-[#f97316]/20 text-[#f97316] font-bold border border-[#f97316]/30'
+                    : 'text-[#94a3b8] hover:bg-white/5 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -131,7 +139,7 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#10b981] text-[#08090a] font-space text-sm font-bold uppercase tracking-wider"
+            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white font-space text-sm font-bold uppercase tracking-wider shadow-lg"
           >
             <span>Start a Project</span>
             <ArrowUpRight className="w-4 h-4" />

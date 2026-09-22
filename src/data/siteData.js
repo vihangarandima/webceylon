@@ -1,5 +1,54 @@
 export const CASE_STUDIES = [
   {
+    id: 'caltea',
+    title: 'Caltea Ceylon — Artisanal Handcrafted Tea & Botanical Rituals',
+    client: 'Lucky Land Estate / Caltea Ceylon',
+    category: 'DTC E-Commerce & Export',
+    badge: 'Artisanal Ceylon Heritage',
+    image: '/projects/caltea/hero.png',
+    gallery: [
+      { url: '/projects/caltea/hero.png', caption: "Nature's Finest in Every Sip — Cinematographic Hero Experience" },
+      { url: '/projects/caltea/pillars.png', caption: 'Handcrafted Pillars: Pyramid Tea Bags & Fabric Packaging' },
+      { url: '/projects/caltea/standards.png', caption: 'Why Choose Caltea — ISO 22000 & Handcrafted Small Batches' },
+      { url: '/projects/caltea/quiz.png', caption: 'Ayurvedic Tea Quiz — Self-Discovery Dosha & Blend Finder' },
+      { url: '/projects/caltea/contact.png', caption: 'Lucky Land Estate Concierge & Corporate Fabric Pouch Gifting' }
+    ],
+    liveUrl: 'https://caltea.lk/',
+    metrics: [
+      { label: 'Interactive Quiz Engagement', value: '42.8%', highlight: true },
+      { label: 'Export Pouch DTC Orders', value: '+265%', highlight: true },
+      { label: 'Boutique Dwell Time', value: '5m 18s', highlight: false },
+      { label: 'Estate Direct Inquiries', value: '180+/mo', highlight: false }
+    ],
+    challenge: 'A third-generation family estate producing single-origin artisanal herbal teas and fabric pouch gifts needed a modern, sensory online boutique that communicated Ayurvedic heritage while driving direct retail sales and corporate gifting orders.',
+    solution: 'WEB CEYLON designed a warm, editorial digital experience inspired by Sri Lankan estate living, featuring a 3-question Ayurvedic dosha tea quiz, interactive estate storytelling, and direct corporate gifting inquiry portals.',
+    stack: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion GL', 'Headless E-Commerce', 'Ayurvedic Quiz Engine']
+  },
+  {
+    id: 'yamucarrentals',
+    title: 'Yamu Car Rentals — Islandwide Vehicle Fleet & Reservation Engine',
+    client: 'Yamu Car Rentals Sri Lanka',
+    category: 'Automotive & Logistics',
+    badge: 'Flagship Mobility Client',
+    image: '/projects/yamu/hero.png',
+    gallery: [
+      { url: '/projects/yamu/hero.png', caption: 'Homepage Hero & Instant Fleet Booking Filter' },
+      { url: '/projects/yamu/search.png', caption: 'Category & Radius Vehicle Search Engine' },
+      { url: '/projects/yamu/fleets.png', caption: 'Verified Rental Company Fleet Showcase' },
+      { url: '/projects/yamu/dashboard.png', caption: 'Super Admin Control Center & Realtime Telemetry' }
+    ],
+    liveUrl: 'https://www.yamucarrentals.lk/',
+    metrics: [
+      { label: 'Booking Inquiry Surge', value: '+310%', highlight: true },
+      { label: 'Self-Drive Fleet Coverage', value: '25+ Districts', highlight: false },
+      { label: 'Mobile Page Load Speed', value: '0.65s', highlight: true },
+      { label: 'SEO Google Rank (LK)', value: '#1 Page', highlight: false }
+    ],
+    challenge: 'Travelers and locals looking for self-drive and chauffeur-driven car hire in Sri Lanka struggled with opaque pricing, unverified car conditions, and complicated deposit systems.',
+    solution: 'WEB CEYLON engineered a streamlined high-conversion booking portal featuring instant category filtering (sedans, SUVs, luxury vans), transparent rate calculators, and direct WhatsApp / instant reservation workflows.',
+    stack: ['React 18', 'Vite', 'Tailwind CSS', 'Node.js', 'Schema.org JSON-LD SEO', 'Cloudflare Edge CDN']
+  },
+  {
     id: 'carrents',
     title: 'CarRents.lk — Premier Fleet Architecture of Sri Lanka',
     client: 'CarRents.lk',

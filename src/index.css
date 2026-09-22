@@ -3,35 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --bg: #08090a;
-  --surface: #121315;
-  --surface-lowest: #0d0e0f;
-  --surface-low: #1b1c1d;
-  --surface-container: #1f2021;
-  --surface-high: #292a2b;
-  --surface-highest: #343536;
-  --surface-bright: #38393a;
+  --bg: #0c101c;
+  --bg-subtle: #111728;
+  --card-surface: rgba(22, 30, 49, 0.75);
+  --card-border: rgba(255, 255, 255, 0.08);
   
-  --primary: #10b981;
-  --primary-glow: #4edea3;
-  --primary-dark: #003824;
-  --primary-container: #00422b;
+  --primary-orange: #f97316;
+  --primary-gold: #f59e0b;
+  --primary-emerald: #10b981;
+  --primary-blue: #0ea5e9;
   
-  --secondary: #d4af37;
-  --secondary-glow: #ffe088;
-  --secondary-container: #af8d11;
-  
-  --tertiary: #06b6d4;
-  --tertiary-glow: #4cd7f6;
-  
-  --text-main: #f4f4f5;
-  --text-body: #e4e4e7;
-  --text-muted: #a1a1aa;
-  --text-subtle: #71717a;
-  
-  --border-subtle: #1f2328;
-  --border-active: #3c4a42;
-  --border-emerald: rgba(16, 185, 129, 0.4);
+  --text-main: #f8fafc;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
 }
 
 html {
@@ -48,38 +32,63 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
+/* Custom Sleek Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0e0f;
+  background: #090d17;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2328;
-  border-radius: 3px;
+  background: #1e293b;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
+  background: #f97316;
 }
 
-/* Glow effects & utilities */
-.glow-primary {
-  box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.25);
+/* Glassmorphism with rich ambient border */
+.glass-nav-sunset {
+  background: rgba(12, 16, 28, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glow-secondary {
-  box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.25);
+/* Sri Lankan Sunset Hero Canvas: Warm Sunset Oranges + Deep Ocean Sapphire */
+.ceylon-sunset-canvas {
+  background: 
+    radial-gradient(ellipse at 15% 10%, rgba(249, 115, 22, 0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 15%, rgba(234, 179, 8, 0.14) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 85%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
+    linear-gradient(180deg, #0f1422 0%, #0a0d16 100%);
 }
 
-.glass-nav {
-  background: rgba(13, 14, 15, 0.85);
+.ceylon-card-glow {
+  background: rgba(17, 24, 39, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.noise-bg {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
-  background-size: 24px 24px;
+.ceylon-card-glow:hover {
+  transform: translateY(-5px);
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.25), 0 0 25px -5px rgba(245, 158, 11, 0.15);
+}
+
+.gradient-text-fire {
+  background: linear-gradient(135deg, #ffedd5 0%, #fdba74 25%, #fb923c 50%, #f97316 75%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-sri-lanka {
+  background: linear-gradient(135deg, #f97316 0%, #fbbf24 40%, #34d399 80%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
