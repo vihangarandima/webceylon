@@ -1,0 +1,387 @@
+/* ==========================================================================
+   WEB CEYLON — design tokens and base
+   Dark lacquer, antique gold, temple crimson. Gold is an accent, never a fill.
+   ========================================================================== */
+
+:root {
+  /* Base */
+  --ink: #0b0908;          /* near-black, warm */
+  --char: #141110;         /* charcoal */
+  --umber: #211712;        /* deep brown */
+  --bronze: #5e4128;       /* dark bronze */
+
+  /* Accents */
+  --gold: #c9a45c;         /* antique gold */
+  --gold-dim: #8c7240;
+  --amber: #e0a045;
+  --crimson: #8e1b1b;      /* mask lacquer */
+  --crimson-hi: #b3261e;
+  --teal: #3d7a73;         /* muted, from temple verdigris */
+
+  /* Text */
+  --bone: #ece4d6;
+  --stone: #a89d8c;        /* 7.4:1 on --ink */
+  --dust: #7d7466;         /* 4.6:1 on --ink — small meta text only */
+  --line: rgba(236, 228, 214, 0.12);
+  --line-strong: rgba(236, 228, 214, 0.24);
+
+  /* Type */
+  --serif: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --sans: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Fluid scale */
+  --fs-meta: 0.72rem;
+  --fs-small: 0.875rem;
+  --fs-body: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
+  --fs-lead: clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
+  --fs-h3: clamp(1.6rem, 1.2rem + 1.6vw, 2.8rem);
+  --fs-h2: clamp(2.6rem, 1.6rem + 4.6vw, 7rem);
+  --fs-mega: clamp(4.2rem, 1rem + 15vw, 20rem);
+
+  /* Layout */
+  --gutter: clamp(16px, 4vw, 64px);
+  --max: 1680px;
+  --nav-h: 72px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Lenis sets these while it is running */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+canvas,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--crimson);
+  color: var(--bone);
+}
+
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* Custom cursor hides the system one — only on fine pointers, and never
+   over text fields where the caret matters. */
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button,
+html.has-cursor [data-cursor] {
+  cursor: none;
+}
+html.has-cursor input,
+html.has-cursor textarea,
+html.has-cursor select {
+  cursor: auto;
+}
+
+/* Film grain over everything — fixed, cheap, and it kills gradient banding */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------- Utilities ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.meta {
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9em;
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.eyebrow::before {
+  content: '';
+  width: 2.2em;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.serif {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+.serif em,
+.italic {
+  font-style: italic;
+}
+
+.h2 {
+  font-family: var(--serif);
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  color: var(--bone);
+  font-weight: 300;
+}
+
+.muted {
+  color: var(--stone);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(96px, 14vw, 220px);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding-bottom: 20px;
+  margin-bottom: clamp(40px, 6vw, 96px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Text link with a drawn underline */
+.ulink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.ulink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s var(--ease-out);
+}
+.ulink:hover::after,
+.ulink:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Button — square-edged, fills from below */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  min-height: 52px;
+  padding: 0 28px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bone);
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.5s var(--ease-out), border-color 0.5s var(--ease-out);
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--bone);
+  transform: translateY(101%);
+  transition: transform 0.6s var(--ease-out);
+}
+.btn:hover,
+.btn:focus-visible {
+  color: var(--ink);
+  border-color: var(--bone);
+}
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translateY(0);
+}
+.btn--gold {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn--gold::before {
+  background: var(--gold);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.5s var(--ease-out);
+}
+a:hover .arrow,
+button:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Split-text internals */
+.split-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.split-char {
+  display: inline-block;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
