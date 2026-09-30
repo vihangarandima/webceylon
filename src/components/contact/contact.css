@@ -1,0 +1,217 @@
+.contact {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  padding-top: clamp(96px, 14vw, 200px);
+  background:
+    radial-gradient(70% 55% at 50% 0%, rgba(142, 27, 27, 0.35), transparent 70%),
+    radial-gradient(60% 50% at 100% 100%, rgba(94, 65, 40, 0.35), transparent 70%),
+    var(--ink);
+}
+
+.contact__lotus {
+  position: absolute;
+  top: -12%;
+  right: -18%;
+  width: min(110vw, 900px);
+  height: auto;
+  color: var(--gold);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.contact__title {
+  position: relative;
+  font-size: clamp(3.4rem, 1rem + 10vw, 13rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+}
+.contact__title .split-line:nth-child(3) {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.contact__grid {
+  position: relative;
+  display: grid;
+  gap: clamp(56px, 7vw, 120px);
+  margin-top: clamp(64px, 8vw, 140px);
+}
+
+.contact__lines {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+}
+.contact__line {
+  display: grid;
+  gap: 6px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.contact__big {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 1rem + 2.2vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  transition: color 0.4s, font-style 0.4s;
+}
+.contact__big--email {
+  font-size: clamp(1.3rem, 0.8rem + 1.5vw, 2.4rem);
+  overflow-wrap: normal;
+}
+.contact__big:hover,
+.contact__big:focus-visible {
+  color: var(--gold);
+  font-style: italic;
+}
+.contact__addr {
+  font-style: normal;
+  color: var(--stone);
+  max-width: 24rem;
+}
+
+/* Form */
+.brief {
+  display: grid;
+  gap: 26px;
+  align-content: start;
+}
+.brief__row {
+  display: grid;
+  gap: 26px;
+}
+.field {
+  display: grid;
+  gap: 8px;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--bone);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  padding: 10px 0;
+  border-radius: 0;
+  transition: border-color 0.4s;
+  resize: vertical;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.field textarea::placeholder {
+  color: var(--dust);
+}
+
+.brief__chips {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.brief__chips legend {
+  margin-bottom: 12px;
+  padding: 0;
+}
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  font-size: var(--fs-small);
+  cursor: pointer;
+  transition: background 0.4s, color 0.4s, border-color 0.4s;
+}
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.chip:hover {
+  border-color: var(--gold);
+}
+.chip.is-on {
+  background: var(--bone);
+  color: var(--ink);
+  border-color: var(--bone);
+}
+.chip:has(input:focus-visible) {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.brief__error {
+  min-height: 1.4em;
+  margin-block: -12px;
+  color: #e3786e;
+  font-size: var(--fs-small);
+}
+.brief__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.brief__note {
+  color: var(--dust);
+  font-size: 0.62rem;
+}
+
+.contact__vine {
+  width: 100%;
+  height: 40px;
+  margin-top: clamp(80px, 10vw, 160px);
+  color: var(--gold-dim);
+  opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+  padding-block: 40px 32px;
+}
+.footer__brand {
+  font-size: clamp(3rem, 16vw, 17rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(236, 228, 214, 0.22);
+  white-space: nowrap;
+}
+.footer__brand em {
+  -webkit-text-stroke: 1px rgba(201, 164, 92, 0.45);
+}
+.footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 32px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.footer__social {
+  display: flex;
+  gap: 24px;
+}
+.footer__top {
+  color: var(--gold);
+}
+
+@media (min-width: 900px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+  .brief__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
