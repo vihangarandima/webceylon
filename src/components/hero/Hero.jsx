@@ -103,11 +103,25 @@ export default function Hero({ ready }) {
         },
       });
       // The canvas fades as the portfolio arrives, then stops rendering.
-      gsap.to([stage.current, backdrop.current], {
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: { trigger: statementEl, start: 'bottom 110%', end: 'bottom 40%', scrub: true },
-      });
+      // On phones the mask cannot move aside, so it dims behind the statement.
+      const narrow = window.innerWidth < 900;
+      if (narrow) {
+        gsap.to(stage.current, {
+          opacity: 0.22,
+          ease: 'none',
+          scrollTrigger: { trigger: statementEl, start: 'top 85%', end: 'top 30%', scrub: true },
+        });
+      }
+      gsap.fromTo(
+        [stage.current, backdrop.current],
+        { opacity: (i) => (narrow && i === 0 ? 0.22 : 1) },
+        {
+          opacity: 0,
+          ease: 'none',
+          immediateRender: false,
+          scrollTrigger: { trigger: statementEl, start: 'bottom 110%', end: 'bottom 40%', scrub: true },
+        }
+      );
       ScrollTrigger.create({
         trigger: statementEl,
         start: 'bottom 40%',

@@ -344,6 +344,7 @@
 
 .work--v {
   padding-block: clamp(96px, 14vw, 180px);
+  overflow-x: clip; /* the stacked screens peek past the plate edges */
 }
 .work--v .work__track {
   display: flex;

@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+// Base styles first, so component stylesheets can override the utilities.
+import './styles/global.css';
 import App from './App.jsx';
 import { track } from './lib/loadTracker';
-import './styles/global.css';
 
 // The loader waits for the display faces, so the first frame of the hero is
 // never set in a fallback font.

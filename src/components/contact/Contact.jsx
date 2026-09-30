@@ -128,8 +128,9 @@ export default function Contact() {
             <li className="contact__line">
               <span className="meta">Write</span>
               <Magnetic strength={0.2}>
-                <a href={`mailto:${STUDIO.email}`} className="contact__big">
-                  {STUDIO.email}
+                <a href={`mailto:${STUDIO.email}`} className="contact__big contact__big--email">
+                  {STUDIO.email.split('@')[0]}
+                  <wbr />@{STUDIO.email.split('@')[1]}
                 </a>
               </Magnetic>
             </li>

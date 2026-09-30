@@ -6,7 +6,7 @@ import './loader.css';
 
 const MIN_MS = 1500;       // long enough for the mask to draw itself
 const MIN_MS_REPEAT = 600; // returning in the same session: get out of the way
-const MAX_MS = 7000;       // never hold anyone hostage to a slow network
+const MAX_MS = 4500;       // never hold anyone hostage: the mask can finish emerging on its own
 
 // The mask draws itself out of the dark while real work loads (fonts, the 3D
 // chunk, the first rendered frame), then the curtain lifts into the hero.

@@ -55,8 +55,12 @@
   font-size: clamp(1.6rem, 1rem + 2.2vw, 3rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  word-break: break-word;
+  overflow-wrap: anywhere;
   transition: color 0.4s, font-style 0.4s;
+}
+.contact__big--email {
+  font-size: clamp(1.3rem, 0.8rem + 1.5vw, 2.4rem);
+  overflow-wrap: normal;
 }
 .contact__big:hover,
 .contact__big:focus-visible {

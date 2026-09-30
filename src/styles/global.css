@@ -60,6 +60,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* clip, not hidden: no horizontal scroll, and sticky/pinned elements keep working */
+  overflow-x: clip;
 }
 
 /* Lenis sets these while it is running */
