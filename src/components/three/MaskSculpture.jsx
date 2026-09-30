@@ -124,10 +124,12 @@ export default function MaskSculpture({ quality = 'high', reduced = false }) {
       flame: painted(tex.blade, { bumpScale: 0.6 }),
       ear: painted(tex.ear, { bumpScale: 0.6 }),
       // Eye rims: plain antique gold.
-      gold: new THREE.MeshPhysicalMaterial({ color: '#b8893a', metalness: 1, roughness: 0.3 }),
-      bone: new THREE.MeshPhysicalMaterial({ color: COLORS.bone, roughness: 0.36, clearcoat: 0.7, clearcoatRoughness: 0.25 }),
-      black: new THREE.MeshPhysicalMaterial({ color: '#0b0908', roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.1 }),
-      tongue: new THREE.MeshPhysicalMaterial({ color: COLORS.crimsonHi, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.15 }),
+      // Small parts share one cheap standard-material program: fewer shaders
+      // to compile before the first frame.
+      gold: new THREE.MeshStandardMaterial({ color: '#b8893a', metalness: 1, roughness: 0.3 }),
+      bone: new THREE.MeshStandardMaterial({ color: COLORS.bone, roughness: 0.3 }),
+      black: new THREE.MeshStandardMaterial({ color: '#0b0908', roughness: 0.15 }),
+      tongue: new THREE.MeshStandardMaterial({ color: COLORS.crimsonHi, roughness: 0.28 }),
       halo: new THREE.MeshBasicMaterial({ color: '#8c7240', transparent: true, opacity: 0.5 }),
     }),
     [tex]

@@ -35,12 +35,10 @@ export const useFinePointer = () => useMedia('(hover: hover) and (pointer: fine)
 // scene. 'none' means no WebGL at all.
 export function deviceTier() {
   if (typeof window === 'undefined') return 'mid';
-  try {
-    const c = document.createElement('canvas');
-    if (!(c.getContext('webgl2') || c.getContext('webgl'))) return 'none';
-  } catch {
-    return 'none';
-  }
+  // Presence check only: creating a probe context costs up to seconds on
+  // some drivers. If a real context then fails, the scene's error boundary
+  // and context-loss handler switch to the photograph.
+  if (!('WebGL2RenderingContext' in window || 'WebGLRenderingContext' in window)) return 'none';
   const saveData = navigator.connection?.saveData;
   const cores = navigator.hardwareConcurrency || 4;
   const memory = navigator.deviceMemory || 4;

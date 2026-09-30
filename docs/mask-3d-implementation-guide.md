@@ -47,13 +47,14 @@ Installed versions: `three@0.170.0` (pinned below latest `0.186.1` because
 drei 9 depends on `three-stdlib`, which lags core — **ASSUMPTION** that 0.170 is
 the safer pairing; npm warned only about `three-mesh-bvh`, a drei transitive
 dependency not used here), `@react-three/fiber@8.18.0`,
-`@react-three/drei@9.122.0`, `gsap@3.15.0`, `@gsap/react@2.1.2`,
+`gsap@3.15.0`, `@gsap/react@2.1.2`,
 `lenis@1.3.26`.
 
-Drei is used for `Environment` + `Lightformer` (procedural image-based
-lighting, no network fetch) and `PerformanceMonitor`. Nothing else from it is
-imported, so the rest tree-shakes away (**ASSUMPTION** — confirm in the build
-report's chunk sizes).
+Drei was installed for `Environment` + `Lightformer` and
+`PerformanceMonitor`, then **removed**: both are replaced by
+`src/components/three/StudioLighting.jsx` (a PMREM render of emissive panels,
+and a two-second frame-rate window that lowers DPR). Measured effect on the
+lazy 3D chunk: 249 kB → 229 kB gzip. What remains is almost entirely three.js.
 
 ---
 
