@@ -61,7 +61,7 @@
   gap: 16px;
 }
 
-/* WEB sits behind the mask (the canvas is z 1); CEYLON passes in front. */
+/* WEB sits behind the mask (the canvas is z 1); CEYLON passes in front with solid luxury contrast. */
 .hero__title {
   display: flex;
   flex-direction: column;
@@ -71,6 +71,8 @@
   line-height: 0.8;
   letter-spacing: -0.045em;
   margin: 0;
+  position: relative;
+  z-index: 3;
 }
 .hero__word {
   display: block;
@@ -80,16 +82,22 @@
   position: relative;
   z-index: 0;
   color: var(--bone);
-  opacity: 0.92;
+  opacity: 0.96;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.85);
+  padding-left: clamp(0px, 1.5vw, 24px);
 }
 .hero__word--b {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   align-self: flex-end;
   font-style: italic;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(236, 228, 214, 0.75);
+  color: var(--bone);
+  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.95), 0 0 60px rgba(201, 164, 92, 0.35);
   margin-top: 0.08em;
+  padding-right: clamp(10px, 3vw, 48px);
+}
+.hero__word--b .split-char {
+  color: var(--bone);
 }
 
 .hero__foot {
