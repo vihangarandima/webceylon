@@ -1,0 +1,179 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* Fixed behind hero + statement; faded out by scroll before the work arrives. */
+.hero__stage {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero__stage canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+/* Warm shrine light and a vignette, painted beneath everything — including
+   the WEB letters that sit behind the mask. */
+.hero__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(50% 55% at 50% 45%, rgba(94, 65, 40, 0.34), transparent 70%),
+    radial-gradient(35% 40% at 75% 28%, rgba(61, 122, 115, 0.1), transparent 70%),
+    radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.hero__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.hero__fallback picture {
+  width: min(64vw, 440px);
+  -webkit-mask-image: radial-gradient(closest-side, #000 60%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 60%, transparent 100%);
+}
+.hero__fallback img {
+  filter: saturate(0.85) contrast(1.05) brightness(0.9);
+}
+
+.hero__inner {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding-top: calc(var(--nav-h) + 16px);
+  padding-bottom: clamp(20px, 4vh, 44px);
+}
+
+.hero__top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* WEB sits behind the mask (the canvas is z 1); CEYLON passes in front. */
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.045em;
+  margin: 0;
+}
+.hero__word {
+  display: block;
+  font-size: var(--fs-mega);
+}
+.hero__word--a {
+  position: relative;
+  z-index: 0;
+  color: var(--bone);
+  opacity: 0.92;
+}
+.hero__word--b {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(236, 228, 214, 0.75);
+  margin-top: 0.08em;
+}
+
+.hero__foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+.hero__intro {
+  max-width: 34rem;
+}
+.hero__claim {
+  font-family: var(--serif);
+  font-size: var(--fs-h3);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.hero__claim em {
+  color: var(--gold);
+}
+.hero__sub {
+  margin-top: 14px;
+  color: var(--stone);
+  font-size: var(--fs-small);
+  max-width: 28rem;
+}
+
+.hero__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+  padding: 8px 0;
+}
+.hero__scroll-line {
+  position: relative;
+  width: 1px;
+  height: 64px;
+  background: var(--line);
+  overflow: hidden;
+}
+.hero__scroll-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  animation: scroll-line 2.4s var(--ease-in-out) infinite;
+}
+@keyframes scroll-line {
+  0% { transform: translateY(-100%); }
+  60%, 100% { transform: translateY(100%); }
+}
+
+@media (max-width: 899px) {
+  .hero__top span:last-child {
+    display: none;
+  }
+  .hero__title {
+    justify-content: space-between;
+    padding-block: 2vh 0;
+  }
+  .hero__word--b {
+    font-size: calc(var(--fs-mega) * 0.92);
+  }
+  .hero__foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero__scroll {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  .hero__scroll-line {
+    width: 48px;
+    height: 1px;
+  }
+  .hero__scroll-line::after {
+    animation-name: scroll-line-x;
+  }
+}
+@keyframes scroll-line-x {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(100%); }
+}
