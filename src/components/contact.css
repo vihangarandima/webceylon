@@ -1,0 +1,170 @@
+.cta__card {
+  position: relative;
+  display: grid;
+  gap: 40px;
+  overflow: hidden;
+  padding: clamp(24px, 5vw, 64px);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.cta__glow {
+  position: absolute;
+  right: -20%;
+  bottom: -60%;
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--glow), transparent);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.cta__card > *:not(.cta__glow) {
+  position: relative;
+}
+.cta__intro {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  justify-items: start;
+}
+.cta__intro .lead {
+  max-width: 28rem;
+}
+.cta__direct {
+  width: 100%;
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.cta__direct li {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+.cta__direct li > span:first-child {
+  color: var(--text-3);
+  font-size: 0.9rem;
+}
+.cta__direct a:hover {
+  color: var(--blue);
+}
+
+.brief {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.brief__row {
+  display: grid;
+  gap: 16px;
+}
+.field {
+  display: grid;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-2);
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line-2);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.25s;
+}
+.field select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 20px) 55%, calc(100% - 15px) 55%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-3);
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.brief__via {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.brief__via legend {
+  float: left;
+  margin-right: 8px;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--text-2);
+}
+.brief__via label {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.brief__via label.is-on {
+  background: var(--invert);
+  color: var(--on-invert);
+  border-color: var(--invert);
+}
+.brief__via input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.brief__via label:has(input:focus-visible) {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+.brief__error {
+  min-height: 1.2em;
+  margin-block: -6px;
+  color: #ff7b6b;
+  font-size: 0.875rem;
+}
+[data-theme='light'] .brief__error {
+  color: #c62a14;
+}
+.brief__send {
+  width: 100%;
+}
+.brief__note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+
+@media (min-width: 640px) {
+  .brief__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .cta__card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 64px;
+  }
+}

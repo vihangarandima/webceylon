@@ -10,7 +10,7 @@ import { readdir, stat } from 'node:fs/promises';
 import { join, extname, basename, dirname } from 'node:path';
 import sharp from 'sharp';
 
-const ROOTS = ['public/projects', 'public/masks'];
+const ROOTS = ['public/projects'];
 const SIZES = [
   { suffix: '', width: 1600 },
   { suffix: '-800', width: 800 },

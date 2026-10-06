@@ -1,0 +1,238 @@
+.cs {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(40px, 7vw, 96px));
+  overflow: hidden;
+}
+.cs__glow {
+  position: absolute;
+  left: 50%;
+  top: -8%;
+  width: min(1000px, 130vw);
+  aspect-ratio: 2 / 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 45%, transparent), transparent);
+  opacity: 0.45;
+  filter: blur(40px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.cs__head {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.cs__back {
+  transition: border-color 0.3s;
+}
+.cs__back:hover {
+  border-color: var(--text);
+}
+.cs__tagline {
+  max-width: 32rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.9rem);
+  color: var(--text-2);
+}
+.cs__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  width: min(100%, 860px);
+  margin-top: 16px;
+  padding: 20px 24px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  text-align: left;
+}
+.cs__facts dt {
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+.cs__facts dd {
+  margin-top: 4px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.cs__facts a:hover {
+  color: var(--blue);
+}
+@media (min-width: 760px) {
+  /* as many columns as there are facts, so two facts never look lopsided */
+  .cs__facts {
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: minmax(0, 1fr);
+  }
+}
+
+.cs__cover {
+  position: relative;
+  margin-top: clamp(40px, 6vw, 72px);
+  padding: 8px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  box-shadow: 0 40px 120px -40px var(--glow);
+}
+.cs__cover img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.cs__overview {
+  display: grid;
+  gap: 40px;
+  padding-top: clamp(72px, 9vw, 130px);
+}
+.cs__summary {
+  max-width: 24em;
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.cs__aside {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+  justify-items: start;
+}
+.cs__label {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.cs__value p:last-child {
+  padding-left: 16px;
+  border-left: 2px solid var(--blue);
+  color: var(--text);
+}
+.cs__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cs__chips li,
+.cs__features li {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  font-size: 0.9rem;
+}
+@media (min-width: 1024px) {
+  .cs__overview {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    column-gap: 80px;
+  }
+}
+
+.cs__story {
+  display: grid;
+  gap: 14px;
+  padding-top: clamp(64px, 8vw, 110px);
+}
+.cs__chapter {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 28px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.cs__no {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--blue);
+}
+.cs__chapter h2 {
+  margin-top: 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.cs__chapter p {
+  color: var(--text-2);
+}
+@media (min-width: 900px) {
+  .cs__story {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.cs__features {
+  padding-top: clamp(56px, 7vw, 88px);
+}
+.cs__features ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cs__gallery {
+  display: grid;
+  gap: 16px;
+  padding-top: clamp(64px, 8vw, 110px);
+}
+.cs__shot {
+  display: grid;
+  gap: 12px;
+}
+.cs__shotFrame {
+  padding: 8px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.cs__shotFrame img {
+  width: 100%;
+  border-radius: 12px;
+}
+.cs__shot figcaption {
+  padding-inline: 4px;
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+.cs__shot figcaption span {
+  margin-right: 8px;
+  color: var(--blue);
+  font-weight: 600;
+}
+@media (min-width: 900px) {
+  .cs__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 16px;
+  }
+}
+
+.cs__results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  padding-top: clamp(64px, 8vw, 110px);
+}
+.cs__results strong {
+  display: block;
+  font-size: clamp(2.6rem, 2rem + 2vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+.cs__results span {
+  color: var(--text-2);
+}
+
+.cs__next {
+  padding-top: clamp(80px, 10vw, 140px);
+}
+.cs__nextCard {
+  max-width: 640px;
+}
