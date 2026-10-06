@@ -55,7 +55,7 @@ export const SERVICES = [
   {
     no: '06',
     name: 'Interactive Experiences',
-    line: '3D, motion and WebGL for brands that need to be remembered — like the page you are on.',
+    line: '3D, motion and WebGL for brands that need to be remembered.',
     detail: ['Three.js / WebGL', 'Scroll-driven storytelling', 'Motion that respects reduced-motion'],
   },
 ];
@@ -101,4 +101,69 @@ export const PROCESS = [
     name: 'Evolve',
     text: 'A site is never finished. We stay on to measure, refine and build the next thing with you.',
   },
+];
+
+// What sets the studio apart. Short, specific, true.
+export const PRINCIPLES = [
+  {
+    title: 'Art-directed, never templated',
+    text: 'Every site starts from a blank page and a clear idea of who you are. No themes, no page builders.',
+  },
+  {
+    title: 'Engineered, not assembled',
+    text: 'Hand-written React and Node.js. Clean, documented code that you own outright.',
+  },
+  {
+    title: 'Fast by default',
+    text: 'Performance budgets are set before the first sketch, and kept through launch.',
+  },
+  {
+    title: 'The details others skip',
+    text: 'Type, spacing, motion — and the loading, empty and error states nobody plans for.',
+  },
+  {
+    title: 'Built around your business',
+    text: 'We start from how your customers decide, then design the page that helps them say yes.',
+  },
+  {
+    title: 'A direct line to the makers',
+    text: 'No account managers. You talk to the people who design and build your site.',
+  },
+];
+
+// Questions people ask before they start. Answers stay within what the
+// studio actually offers — no promised timelines or prices.
+export const FAQS = [
+  [
+    'How do we get started?',
+    'Send a few lines through the form below, by email or on WhatsApp. We reply on whichever you prefer, ask a few questions, and send a clear proposal with scope, timeline and cost.',
+  ],
+  [
+    'How involved do I need to be?',
+    'You share your content, preferences and feedback at the key moments. We handle the design, development, testing and launch — and you see progress on a live preview link throughout.',
+  ],
+  [
+    'How long does a website take?',
+    'It depends on the number of pages and the features involved. You get a timeline with the proposal, before any work begins, and we keep to it.',
+  ],
+  [
+    'Do you build online stores and web applications?',
+    'Yes. Alongside websites we build online stores with local and international payments, and web applications with accounts, roles, dashboards and admin consoles.',
+  ],
+  [
+    'Will it work on phones?',
+    'Every site is designed and tested from 320px phones to 4K screens. Mobile is designed on purpose, not shrunk from the desktop.',
+  ],
+  [
+    'Do I own the website?',
+    'Yes. You own the design and the code outright, and we hand over everything you need to run it.',
+  ],
+  [
+    'Do you support the site after launch?',
+    'Yes. We stay on to measure, refine, update content and build what comes next.',
+  ],
+  [
+    'Do you work with clients outside Sri Lanka?',
+    'Yes. We work with clients in Sri Lanka and abroad, keeping in touch over email, WhatsApp and video calls across time zones.',
+  ],
 ];

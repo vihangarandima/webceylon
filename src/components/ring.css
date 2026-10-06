@@ -1,0 +1,117 @@
+/* Tall section; the stage sticks while the ring turns with the scroll */
+.ring-section {
+  position: relative;
+  height: 220vh;
+}
+.ring-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+.ring-stage:active {
+  cursor: grabbing;
+}
+.ring-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(40% 35% at 50% 50%, rgba(31, 107, 255, 0.28), transparent 70%),
+    linear-gradient(115deg, transparent 30%, rgba(31, 107, 255, 0.18) 45%, transparent 55%),
+    linear-gradient(65deg, transparent 40%, rgba(31, 107, 255, 0.14) 52%, transparent 62%);
+  pointer-events: none;
+}
+
+.ring-scene {
+  position: absolute;
+  inset: 0;
+  perspective: 1300px;
+  perspective-origin: 50% 50%;
+}
+/* The ring is pushed toward the camera, so we look into it: the far wall
+   faces us and the near side (facing away) is hidden. */
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+.ring__card {
+  position: absolute;
+  left: calc(var(--card-w, 300px) / -2);
+  top: calc(var(--card-w, 300px) * -0.32);
+  width: var(--card-w, 300px);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #111;
+  /* each row sits one card-height (plus a gap) above or below the middle */
+  transform: rotateY(var(--a)) translateZ(calc(var(--radius, 700px) * -1))
+    translateY(calc(var(--row) * var(--card-w, 300px) * 0.74));
+  backface-visibility: hidden;
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.8);
+  transition: border-color 0.3s;
+}
+.ring__card:hover {
+  border-color: var(--blue);
+}
+.ring__card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  pointer-events: none;
+}
+
+.ring-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(34% 26% at 50% 50%, rgba(0, 0, 0, 0.72), transparent 75%);
+}
+.ring-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.ring-center__link {
+  pointer-events: auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(3rem, 2rem + 4vw, 6rem);
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+  transition: letter-spacing 0.5s var(--ease);
+}
+.ring-center__link:hover {
+  letter-spacing: 0.02em;
+}
+.ring-center__hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Light theme: keep the room dark — it is a screening room */
+[data-theme='light'] .ring-stage {
+  background: #050507;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-section {
+    height: auto;
+  }
+  .ring-stage {
+    position: relative;
+  }
+}

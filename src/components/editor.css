@@ -1,0 +1,350 @@
+/* The showcase is always a dark tool UI, like the real thing — in both themes. */
+.editor {
+  --e-bg: #0c0c0f;
+  --e-panel: #151519;
+  --e-panel-2: #1e1e24;
+  --e-line: rgba(255, 255, 255, 0.08);
+  --e-text: #f2f2f2;
+  --e-muted: rgba(255, 255, 255, 0.5);
+
+  position: relative;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--e-bg);
+  color: var(--e-text);
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(31, 107, 255, 0.25), 0 30px 120px -20px var(--glow), 0 60px 140px -60px rgba(0, 0, 0, 0.8);
+  font-size: 13px;
+}
+
+/* ---------- Top bar ---------- */
+
+.editor__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--e-line);
+}
+.editor__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: var(--e-panel-2);
+}
+.editor__devices {
+  display: flex;
+  margin-left: auto;
+  padding: 3px;
+  border-radius: 9px;
+  background: var(--e-panel);
+}
+.editor__devices button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 26px;
+  border-radius: 6px;
+  color: var(--e-muted);
+}
+.editor__devices button[aria-pressed='true'] {
+  background: var(--e-panel-2);
+  color: var(--e-text);
+}
+.editor__readout {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: var(--e-panel);
+  font-variant-numeric: tabular-nums;
+}
+.editor__readout span {
+  color: var(--e-muted);
+}
+.editor__readout i {
+  width: 1px;
+  height: 14px;
+  margin-inline: 4px;
+  background: var(--e-line);
+}
+.editor__avatars {
+  display: flex;
+  margin-right: auto;
+}
+.editor__avatars b {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-left: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--e-bg);
+  background: linear-gradient(135deg, #2b65e8, #7aa7ff);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ---------- Body ---------- */
+
+.editor__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+}
+.editor__left,
+.editor__right {
+  display: none;
+}
+
+.editor__left {
+  padding: 12px;
+  border-right: 1px solid var(--e-line);
+}
+.editor__tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3px;
+  border-radius: 9px;
+  background: var(--e-panel);
+  text-align: center;
+  color: var(--e-muted);
+}
+.editor__tabs span {
+  padding: 6px 0;
+  border-radius: 6px;
+}
+.editor__tabs .is-on {
+  background: var(--e-panel-2);
+  color: var(--e-text);
+}
+.editor__page {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: var(--e-panel);
+}
+.editor__layers {
+  display: grid;
+  gap: 2px;
+}
+.editor__layers button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 7px;
+  color: var(--e-muted);
+  text-align: left;
+  transition: background 0.35s var(--ease), color 0.35s;
+}
+.editor__layers button:hover {
+  background: var(--e-panel);
+  color: var(--e-text);
+}
+.editor__layers button.is-on {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* The canvas: a strip of real screens, drifting */
+.editor__canvas {
+  position: relative;
+  padding: 18px 0 64px;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.07) 1px, transparent 0) 0 0 / 18px 18px,
+    #09090b;
+  overflow: hidden;
+}
+.editor__viewport {
+  margin-inline: auto;
+  transition: max-width 0.6s var(--ease);
+}
+[data-device='mobile'] .editor__viewport {
+  max-width: 300px;
+}
+.editor__strip {
+  display: flex;
+  overflow: hidden;
+}
+.editor__track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+  padding-right: 16px;
+  animation: marquee var(--speed, 60s) linear infinite;
+}
+.editor__strip:hover .editor__track,
+.editor__track.is-paused {
+  animation-play-state: paused;
+}
+.shot {
+  display: grid;
+  gap: 8px;
+  width: clamp(240px, 30vw, 400px);
+  flex-shrink: 0;
+}
+[data-device='mobile'] .shot {
+  width: 268px;
+}
+.shot__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--e-muted);
+  font-size: 12px;
+}
+.shot__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+.shot__frame {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--e-line);
+  outline: 2px solid transparent;
+  transition: outline-color 0.3s, transform 0.5s var(--ease);
+}
+.shot:hover .shot__frame {
+  outline-color: var(--blue);
+  transform: translateY(-4px);
+}
+.shot__frame img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+}
+.editor__hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 70px;
+  display: none;
+  text-align: center;
+  color: var(--e-muted);
+  font-size: 12px;
+}
+
+.editor__right {
+  padding: 14px;
+  border-left: 1px solid var(--e-line);
+}
+.editor__panelTitle {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--e-line);
+  font-weight: 600;
+}
+.editor__right dl {
+  display: grid;
+  gap: 6px;
+}
+.editor__right dt {
+  margin-top: 10px;
+  font-weight: 600;
+}
+.editor__right dd {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 6px;
+  color: var(--e-muted);
+}
+.editor__right dd b,
+.editor__right dd em {
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: var(--e-panel);
+  color: var(--e-text);
+  font-weight: 400;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+.editor__right dd em {
+  color: var(--e-muted);
+}
+
+/* ---------- Floating toolbar ---------- */
+
+.editor__toolbar {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid var(--e-line);
+  background: rgba(21, 21, 25, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transform: translateX(-50%);
+}
+.editor__tool {
+  display: grid;
+  place-items: center;
+  min-width: 36px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 8px;
+  color: var(--e-text);
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.25s;
+}
+.editor__tool:hover {
+  background: var(--e-panel-2);
+}
+.editor__tool.is-on {
+  background: var(--blue);
+}
+
+@media (min-width: 720px) {
+  .editor__readout {
+    display: inline-flex;
+  }
+  .editor__avatars {
+    margin-right: 0;
+    margin-left: auto;
+  }
+  .editor__devices {
+    margin-left: 0;
+  }
+  .editor__top {
+    justify-content: space-between;
+  }
+  .editor__hint {
+    display: block;
+  }
+}
+@media (min-width: 1024px) {
+  .editor__body {
+    grid-template-columns: 220px minmax(0, 1fr) 220px;
+  }
+  .editor__left,
+  .editor__right {
+    display: block;
+  }
+  .editor__canvas {
+    padding-top: 40px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+  }
+  .editor__viewport {
+    width: 100%;
+    margin-block: auto;
+  }
+}
