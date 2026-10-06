@@ -379,3 +379,98 @@ ol {
     filter: none;
   }
 }
+
+/* ---------- Rails (phones) ----------
+   Long lists of cards become one swipeable row on phones: each card snaps
+   into place and the next one peeks in from the right. */
+
+@media (max-width: 639px) {
+  .rail {
+    display: flex !important;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .rail > * {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+}
+
+.rail-dots {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+.rail-dots__label {
+  font-size: 0.85rem;
+  color: var(--text-3);
+}
+.rail-dots__label span {
+  display: inline-block;
+  animation: nudge 1.6s var(--ease) infinite;
+}
+@keyframes nudge {
+  50% {
+    transform: translateX(4px);
+  }
+}
+.rail-dots__dots {
+  display: flex;
+  gap: 2px;
+}
+/* 24px touch targets, small visible dots */
+.rail-dots__dots button {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.rail-dots__dots button::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line-2);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s var(--ease), background 0.3s;
+}
+.rail-dots__dots button.is-on::after {
+  width: 18px;
+  background: var(--blue);
+}
+@media (min-width: 640px) {
+  .rail-dots {
+    display: none;
+  }
+}
+
+/* Phones: a quicker, cheaper reveal — no blur while the thumb is moving */
+@media (max-width: 639px) {
+  .reveal-ready [data-reveal] {
+    filter: none;
+    transform: translateY(16px);
+    transition-duration: 0.6s;
+  }
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding-block: 64px;
+  }
+  .section-head {
+    margin-bottom: 32px;
+  }
+}

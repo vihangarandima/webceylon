@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { PROJECTS } from '../data/projects';
+import RailDots from '../components/RailDots';
 import { SERVICES, PROCESS, TECHNOLOGY } from '../data/studio';
 import useReveal from '../lib/useReveal';
 import Button from '../components/Button';
 import EditorShowcase from '../components/EditorShowcase';
-import WorkRing from '../components/WorkRing';
+import IntroWall from '../components/IntroWall';
+import WorksSphere from '../components/sphere/WorksSphere';
 import Marquee from '../components/Marquee';
 import Faq from '../components/Faq';
 import ContactCta from '../components/ContactCta';
-import Picture from '../components/Picture';
 import './home.css';
 
 // A line glyph per service, on a 24px grid.
@@ -56,7 +56,14 @@ function Hero() {
 function Tools() {
   return (
     <section id="tools" className="tools" aria-label="What we build with">
-      <div className="wrap">
+      <Marquee speed={28} gap={36} className="tools__strip">
+        {TECHNOLOGY.map((t) => (
+          <span key={t.name} className="tools__chip">
+            {t.name}
+          </span>
+        ))}
+      </Marquee>
+      <div className="wrap tools__wrap">
         <ul className="tools__grid">
           {TECHNOLOGY.slice(0, 8).map((t, i) => (
             <li key={t.name} data-reveal style={{ '--d': `${i * 0.04}s` }}>
@@ -70,45 +77,8 @@ function Tools() {
   );
 }
 
-function Intro() {
-  const [a, b] = PROJECTS;
-  return (
-    <section id="intro" className="section intro">
-      <div className="wrap intro__grid">
-        <div className="intro__copy">
-          <h2 className="h2" data-reveal>
-            Design that <em>speaks.</em>
-            <br />
-            Code that <em>performs.</em>
-          </h2>
-          <p className="lead" data-reveal style={{ '--d': '0.08s' }}>
-            WEB CEYLON is a small studio in Colombo. We design and build focused digital experiences — from a first
-            sketch to the last line of code — that make a brand look as good online as it is in person, and turn
-            visitors into customers.
-          </p>
-          <div className="intro__actions" data-reveal style={{ '--d': '0.16s' }}>
-            <Button to="/#approach">Our approach</Button>
-            <Button to="/works" variant="line">
-              See our work
-            </Button>
-          </div>
-        </div>
-        <div className="intro__stack" aria-hidden="true">
-          {[a, b].filter(Boolean).map((p, i) => (
-            <div key={p.slug} className={`intro__shot intro__shot--${i}`} data-reveal style={{ '--d': `${0.1 + i * 0.12}s` }}>
-              <Picture src={p.cover} sizes="(min-width: 1024px) 40vw, 80vw" />
-              <span className="intro__badge">
-                <i style={{ background: p.accent }} /> {p.name}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Services() {
+  const rail = useRef(null);
   return (
     <section id="services" className="section services">
       <div className="wrap">
@@ -125,7 +95,7 @@ function Services() {
             </Button>
           </div>
         </div>
-        <ul className="services__grid">
+        <ul ref={rail} className="services__grid rail">
           {SERVICES.map((s, i) => (
             <li key={s.no} className="service" data-reveal style={{ '--d': `${(i % 3) * 0.06}s` }}>
               <span className="service__icon">
@@ -143,6 +113,7 @@ function Services() {
             </li>
           ))}
         </ul>
+        <RailDots railRef={rail} count={SERVICES.length} />
       </div>
     </section>
   );
@@ -180,6 +151,7 @@ function Platforms() {
 }
 
 function Approach() {
+  const rail = useRef(null);
   return (
     <section id="approach" className="section approach">
       <div className="wrap">
@@ -194,7 +166,7 @@ function Approach() {
             A clear path from first call to launch, and beyond.
           </p>
         </div>
-        <ol className="approach__grid">
+        <ol ref={rail} className="approach__grid rail">
           {PROCESS.map((p, i) => (
             <li key={p.no} className={`step step--${i}`} data-reveal style={{ '--d': `${i * 0.06}s` }}>
               <span className="step__no">{p.no}</span>
@@ -203,6 +175,7 @@ function Approach() {
             </li>
           ))}
         </ol>
+        <RailDots railRef={rail} count={PROCESS.length} />
       </div>
     </section>
   );
@@ -220,8 +193,8 @@ export default function Home() {
     <div ref={root}>
       <Hero />
       <Tools />
-      <Intro />
-      <WorkRing />
+      <IntroWall />
+      <WorksSphere />
       <Services />
       <Platforms />
       <Approach />

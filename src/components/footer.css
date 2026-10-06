@@ -72,3 +72,17 @@
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.2fr);
   }
 }
+
+/* Phones and tablets: brand across the top, the two link lists side by side */
+@media (max-width: 899px) {
+  .footer__top {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 32px 20px;
+  }
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+  .footer__col a {
+    font-size: 0.92rem;
+  }
+}

@@ -76,7 +76,28 @@
   max-width: 1440px;
 }
 
-/* ---------- Tools ---------- */
+/* ---------- Tools ----------
+   A moving strip of names on phones, a grid from 600px up. */
+
+.tools__strip {
+  display: none;
+  padding-block: 4px;
+}
+.tools__chip {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  color: var(--text-2);
+}
+@media (max-width: 599px) {
+  .tools__strip {
+    display: flex;
+  }
+  .tools__wrap {
+    display: none;
+  }
+}
 
 .tools {
   padding-top: clamp(56px, 7vw, 96px);
@@ -114,88 +135,6 @@
 @media (min-width: 600px) {
   .tools__grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-/* ---------- Intro ---------- */
-
-.intro__grid {
-  display: grid;
-  gap: clamp(48px, 6vw, 80px);
-  align-items: center;
-}
-.intro__copy {
-  display: grid;
-  gap: 22px;
-  justify-items: start;
-}
-.intro__copy .lead {
-  max-width: 34rem;
-}
-.intro__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.intro__stack {
-  position: relative;
-  aspect-ratio: 5 / 4;
-  perspective: 1400px;
-}
-.intro__shot {
-  position: absolute;
-  width: 82%;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid var(--line-2);
-  background: var(--panel);
-  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.7);
-}
-.intro__shot img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top;
-}
-.intro__shot--0 {
-  top: 0;
-  left: 0;
-  transform: rotateY(12deg) rotateX(4deg);
-}
-.intro__shot--1 {
-  right: 0;
-  bottom: 0;
-  transform: rotateY(-10deg) rotateX(-3deg);
-}
-.reveal-ready .intro__shot.is-in.intro__shot--0 {
-  transform: rotateY(12deg) rotateX(4deg);
-}
-.reveal-ready .intro__shot.is-in.intro__shot--1 {
-  transform: rotateY(-10deg) rotateX(-3deg);
-}
-.intro__badge {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  font-size: 0.8rem;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.intro__badge i {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
-@media (min-width: 1024px) {
-  .intro__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
   }
 }
 
@@ -400,5 +339,41 @@
   .step--0,
   .step--1 {
     min-height: 260px;
+  }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 639px) {
+  .hero {
+    padding-top: calc(var(--header-h) + 24px);
+  }
+  .hero__lead {
+    margin-top: 16px;
+  }
+  .hero__actions {
+    width: 100%;
+    margin-top: 26px;
+  }
+  .hero__actions .btn {
+    flex: 1 1 0;
+    padding: 0 14px;
+  }
+  .hero__editor {
+    margin-top: 40px;
+  }
+  .tools {
+    padding-top: 48px;
+  }
+  .services__head {
+    margin-bottom: 28px;
+  }
+  .service {
+    padding: 24px;
+  }
+  .step--0 {
+    grid-column: auto;
+  }
+  .platforms__head {
+    margin-bottom: 28px;
   }
 }

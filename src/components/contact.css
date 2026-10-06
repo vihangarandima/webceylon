@@ -168,3 +168,20 @@
     gap: 64px;
   }
 }
+
+/* Phones: one calm column, less frame around the form */
+@media (max-width: 639px) {
+  .cta__card {
+    gap: 28px;
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+  .brief {
+    padding: 18px 16px;
+  }
+  .brief__via legend {
+    float: none;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}
