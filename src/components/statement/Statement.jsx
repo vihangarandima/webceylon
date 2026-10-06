@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { gsap, useGSAP, prefersReducedMotion } from '../../lib/motion';
-import { LiyaWela } from '../ui/Ornament';
 import './statement.css';
 
 // Words brighten one by one as you read down the page, while the camera
@@ -22,7 +21,7 @@ export default function Statement() {
       if (prefersReducedMotion()) return;
       gsap.fromTo(
         '.statement__w',
-        { opacity: 0.14 },
+        { opacity: 0.16 },
         {
           opacity: 1,
           ease: 'none',
@@ -30,16 +29,6 @@ export default function Statement() {
           scrollTrigger: { trigger: '.statement__text', start: 'top 80%', end: 'bottom 45%', scrub: true },
         }
       );
-      const vine = root.current.querySelectorAll('.statement__vine path');
-      vine.forEach((p) => {
-        const len = p.getTotalLength();
-        gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
-      });
-      gsap.to(vine, {
-        strokeDashoffset: 0,
-        ease: 'none',
-        scrollTrigger: { trigger: root.current, start: 'top 70%', end: 'bottom 60%', scrub: true },
-      });
     },
     { scope: root }
   );
@@ -47,7 +36,7 @@ export default function Statement() {
   return (
     <section ref={root} id="statement" className="statement" aria-label="About the studio in one sentence">
       <div className="wrap statement__grid">
-        <span className="meta statement__label">(02) Statement</span>
+        <span className="eyebrow statement__label">The studio</span>
         <p className="statement__text">
           {WORDS.map(([chunk, style], i) =>
             chunk.split(' ').map((w, j) => (
@@ -68,7 +57,6 @@ export default function Statement() {
           </p>
         </div>
       </div>
-      <LiyaWela className="statement__vine" segments={14} />
     </section>
   );
 }

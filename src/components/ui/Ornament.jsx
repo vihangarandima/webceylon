@@ -2,7 +2,6 @@
 // animated (stroke-dash) and recoloured with currentColor.
 //
 //   Lotus    — the brand glyph; eight petals, two rings. Also the process dial.
-//   LiyaWela — the Kandyan running vine scroll, used as a section divider.
 //   MaskLine — a line drawing of a Gurulu Raksha mask, used by the loader.
 
 const TAU = Math.PI * 2;
@@ -27,50 +26,6 @@ export function Lotus({ size = 40, petals = 8, className = '', petalClass = '', 
       ))}
       <circle r="5" />
       <circle r="1.6" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-// A continuous S-scroll with a curl at every crest — the liya-wela.
-function vinePath(segments, w = 80, h = 22) {
-  let d = `M0 ${h}`;
-  for (let i = 0; i < segments; i++) {
-    const x = i * w;
-    const up = i % 2 === 0;
-    const cy = up ? 0 : h * 2;
-    d += ` C ${x + w * 0.25} ${cy}, ${x + w * 0.75} ${cy}, ${x + w} ${h}`;
-  }
-  return d;
-}
-
-function curls(segments, w = 80, h = 22) {
-  const out = [];
-  for (let i = 0; i < segments; i++) {
-    const up = i % 2 === 0;
-    const cx = i * w + w * 0.5;
-    const cy = up ? h * 0.42 : h * 1.58;
-    const s = up ? 1 : -1;
-    // a small spiral tendril hanging from the crest
-    out.push(
-      `M${f(cx)} ${f(cy - s * 5)} c ${f(6)} ${f(s * 1)}, ${f(7)} ${f(s * 8)}, ${f(1)} ${f(s * 9)} c ${f(-4)} ${f(s * 0.6)}, ${f(-5)} ${f(-s * 4)}, ${f(-1)} ${f(-s * 4.4)}`
-    );
-    // a leaf on the outside of the wave
-    const lx = i * w + w * 0.9;
-    const ly = up ? h * 0.35 : h * 1.65;
-    out.push(`M${f(lx)} ${f(ly + s * 4)} q ${f(6)} ${f(-s * 8)}, ${f(12)} ${f(-s * 6)} q ${f(-4)} ${f(s * 6)}, ${f(-12)} ${f(s * 6)} Z`);
-  }
-  return out;
-}
-
-export function LiyaWela({ segments = 12, className = '', ...rest }) {
-  const w = 80;
-  const h = 22;
-  return (
-    <svg viewBox={`0 -4 ${segments * w} ${h * 2 + 8}`} preserveAspectRatio="none" className={className} fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true" {...rest}>
-      <path className="vine-main" d={vinePath(segments, w, h)} />
-      {curls(segments, w, h).map((d, i) => (
-        <path key={i} className="vine-curl" d={d} />
-      ))}
     </svg>
   );
 }

@@ -3,7 +3,6 @@ import { gsap, useGSAP, prefersReducedMotion } from '../../lib/motion';
 import { STUDIO, SERVICES, whatsappLink } from '../../data/studio';
 import SplitReveal from '../ui/SplitReveal';
 import Magnetic from '../ui/Magnetic';
-import { LiyaWela, Lotus } from '../ui/Ornament';
 import { useScroll } from '../ui/SmoothScroll';
 import './contact.css';
 
@@ -68,10 +67,10 @@ function Brief() {
         {error}
       </p>
       <div className="brief__actions">
-        <button type="submit" className="btn btn--gold">
+        <button type="submit" className="btn btn--light">
           Send by email <span className="arrow">↗</span>
         </button>
-        <button type="button" className="btn" onClick={byWhatsApp}>
+        <button type="button" className="btn btn--outline-light" onClick={byWhatsApp}>
           Send on WhatsApp <span className="arrow">↗</span>
         </button>
       </div>
@@ -89,13 +88,6 @@ export default function Contact() {
   useGSAP(
     () => {
       if (prefersReducedMotion()) return;
-      gsap.from('.contact__lotus', {
-        rotate: -120,
-        scale: 0.6,
-        opacity: 0,
-        duration: 2.4,
-        scrollTrigger: { trigger: root.current, start: 'top 70%', once: true },
-      });
       gsap.from('.contact__line, .brief', {
         opacity: 0,
         y: 30,
@@ -109,19 +101,17 @@ export default function Contact() {
 
   return (
     <section ref={root} id="contact" className="contact" aria-labelledby="contact-title">
-      <Lotus size={900} className="contact__lotus" strokeWidth={0.25} />
       <div className="wrap">
-        <div className="section-head">
-          <span className="meta">(08) Contact</span>
-          <span className="meta">{STUDIO.hours}</span>
-        </div>
-
+        <span className="eyebrow contact__eyebrow">Contact</span>
         <SplitReveal
           id="contact-title"
           className="contact__title serif"
-          lines={['Let’s build', 'something', 'unforgettable.']}
+          lines={['Let’s build', 'something lasting.']}
           stagger={0.03}
         />
+        <p className="contact__intro">
+          Tell us what you are building and when you need it. Studio hours: {STUDIO.hours}.
+        </p>
 
         <div className="contact__grid">
           <ul className="contact__lines">
@@ -164,8 +154,6 @@ export default function Contact() {
         </div>
       </div>
 
-      <LiyaWela className="contact__vine" segments={16} />
-
       <footer className="footer wrap">
         <div className="footer__brand serif">
           WEB <em>Ceylon</em>
@@ -184,7 +172,7 @@ export default function Contact() {
             </ul>
           )}
           <button className="ulink meta footer__top" onClick={() => scrollTo(0)}>
-            Return to the mask ↑
+            Back to top ↑
           </button>
         </div>
       </footer>

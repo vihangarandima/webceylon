@@ -1,8 +1,6 @@
 .about {
   z-index: 3;
-  background:
-    radial-gradient(60% 50% at 90% 30%, rgba(142, 27, 27, 0.16), transparent 70%),
-    var(--ink);
+  background: var(--paper);
 }
 
 .about__grid {
@@ -11,19 +9,23 @@
   align-items: center;
 }
 
-.about__title .split-line:nth-child(3),
-.about__title .split-line:nth-child(4) {
+.about__title {
+  margin-top: 24px;
+}
+/* first line (child 1 is the screen-reader copy) */
+.about__title .split-line:nth-child(2) {
   font-style: italic;
-  color: var(--gold);
+  color: var(--crimson);
 }
 .about__lead {
-  margin-top: clamp(32px, 4vw, 56px);
+  margin-top: clamp(28px, 3.5vw, 48px);
   max-width: 34rem;
+  color: var(--text);
 }
 .about__body {
-  margin-top: 22px;
+  margin-top: 18px;
   max-width: 34rem;
-  color: var(--stone);
+  color: var(--text-2);
 }
 
 .about__figure {
@@ -33,55 +35,53 @@
 }
 /* An arch, after the doorways of Kandyan temples */
 .about__arch {
-  width: min(100%, 460px);
+  width: min(100%, 440px);
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 999px 999px 0 0;
-  border: 1px solid var(--gold-dim);
   clip-path: inset(0% 0% 0% 0% round 999px 999px 0 0);
+  background: var(--paper-2);
 }
 .about__arch img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.9) contrast(1.05);
 }
 .about__figure figcaption {
-  max-width: 24rem;
+  max-width: 22rem;
   text-align: center;
-  color: var(--dust);
-  line-height: 1.7;
+  font-size: 0.82rem;
+  color: var(--text-3);
+  line-height: 1.6;
 }
 
 .about__principles {
   display: grid;
-  gap: 1px;
-  margin-top: clamp(80px, 10vw, 160px);
-  background: var(--line);
-  border-block: 1px solid var(--line);
+  gap: 40px;
+  margin-top: clamp(80px, 10vw, 140px);
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--line);
 }
 .principle {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   align-content: start;
-  padding: clamp(28px, 3vw, 44px) clamp(0px, 2vw, 32px);
-  background: var(--ink);
 }
 .principle__no {
-  font-size: 2.2rem;
+  font-size: 1.4rem;
   font-style: italic;
   color: var(--gold);
   line-height: 1;
 }
 .principle__title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 .principle__text {
-  color: var(--stone);
+  color: var(--text-2);
   font-size: var(--fs-small);
-  max-width: 26rem;
+  max-width: 24rem;
 }
 
 @media (min-width: 900px) {
@@ -90,8 +90,6 @@
   }
   .about__principles {
     grid-template-columns: repeat(3, 1fr);
-  }
-  .principle:first-child {
-    padding-left: 0;
+    column-gap: clamp(32px, 4vw, 64px);
   }
 }

@@ -15,26 +15,22 @@
 
 .statement__text {
   font-family: var(--serif);
-  font-size: clamp(2rem, 1.2rem + 3.4vw, 5.2rem);
-  line-height: 1.04;
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 4.2rem);
+  line-height: 1.06;
   letter-spacing: -0.025em;
   max-width: 15em;
   text-wrap: balance;
 }
-.statement__w {
-  /* soft shadow keeps words legible when the mask passes behind them */
-  text-shadow: 0 2px 30px rgba(11, 9, 8, 0.8);
-}
 .statement__w--em {
   font-style: italic;
-  color: var(--gold);
+  color: var(--crimson);
 }
 
 .statement__notes {
   display: grid;
   gap: 20px;
   max-width: 36rem;
-  color: var(--stone);
+  color: var(--text-2);
   font-size: var(--fs-small);
 }
 .statement__notes p {
@@ -44,11 +40,12 @@
   border-top: 1px solid var(--line);
 }
 
-.statement__vine {
-  width: 100%;
-  height: 46px;
-  margin-top: 12vh;
-  color: var(--gold-dim);
+/* Phones: the mask has already left, so no extra scroll room is needed */
+@media (max-width: 899px) {
+  .statement {
+    min-height: 0;
+    padding-block: 18vh 4vh;
+  }
 }
 
 @media (min-width: 900px) {
@@ -56,11 +53,15 @@
     grid-template-columns: 180px 1fr;
     column-gap: 40px;
   }
+  .statement__label {
+    align-self: start;
+    margin-top: 1.2em;
+  }
   .statement__text,
   .statement__notes {
     grid-column: 2;
     /* keep clear of the mask, which drifts right during this section */
-    max-width: min(13em, 50vw);
+    max-width: min(12em, 44vw);
   }
   .statement__notes {
     grid-template-columns: 1fr 1fr;

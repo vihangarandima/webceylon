@@ -5,7 +5,7 @@ import { getProject, nextProject } from '../../data/projects';
 import { usePageTransition } from '../ui/PageTransition';
 import SplitReveal from '../ui/SplitReveal';
 import Picture from '../ui/Picture';
-import { Lotus } from '../ui/Ornament';
+import { host } from '../portfolio/ProjectCard';
 import Contact from '../contact/Contact';
 import './case-study.css';
 
@@ -43,24 +43,10 @@ export default function CaseStudy() {
   useGSAP(
     () => {
       if (!project || prefersReducedMotion()) return;
-      gsap.to('.cs__heroImg img', {
-        yPercent: 18,
-        scale: 1.12,
-        ease: 'none',
-        scrollTrigger: { trigger: '.cs__hero', start: 'top top', end: 'bottom top', scrub: true },
-      });
-      gsap.from('.cs__heroMeta > *', { opacity: 0, y: 24, stagger: 0.08, duration: 1.2, delay: 0.5 });
+      gsap.from('.cs__head > *', { opacity: 0, y: 24, stagger: 0.07, duration: 1.2, delay: 0.3 });
+      gsap.from('.cs__cover .frame', { opacity: 0, y: 60, duration: 1.6, delay: 0.5 });
       gsap.utils.toArray('.cs__shot').forEach((el) => {
-        gsap.fromTo(
-          el.querySelector('.cs__shotFrame'),
-          { clipPath: 'inset(12% 6% 12% 6%)' },
-          { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true } }
-        );
-        gsap.fromTo(el.querySelector('img'), { yPercent: -6 }, {
-          yPercent: 6,
-          ease: 'none',
-          scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
-        });
+        gsap.from(el, { opacity: 0, y: 50, duration: 1.4, scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
       });
       gsap.utils.toArray('.chapter').forEach((el) => {
         gsap.from(el.querySelectorAll('.chapter__label, .chapter__text, .cs__features li, .cs__stack li'), {
@@ -88,25 +74,35 @@ export default function CaseStudy() {
 
   return (
     <article ref={root} className="cs" style={{ '--accent': project.accent }}>
-      <header className="cs__hero">
-        <Picture className="cs__heroImg" src={project.cover} alt={`${project.name} — ${first.caption}`} eager sizes="100vw" />
-        <div className="cs__heroShade" aria-hidden="true" />
-        <div className="cs__heroMeta wrap">
-          <Link to="/#work" className="meta ulink cs__back">
-            ← All work
-          </Link>
-          <span className="meta">
-            {project.index} — {project.category} · {project.year}
-          </span>
-          <SplitReveal as="h1" className="cs__title serif" lines={[project.name]} delay={0.35} stagger={0.03} />
-          <p className="cs__tagline">{project.tagline}</p>
-          {project.liveUrl && (
-            <a href={project.liveUrl} target="_blank" rel="noreferrer" className="btn btn--gold cs__visit">
-              Visit the live site <span className="arrow">↗</span>
-            </a>
-          )}
-        </div>
+      <header className="wrap cs__head">
+        <Link to="/#work" className="cs__back ulink">
+          ← All work
+        </Link>
+        <span className="meta">
+          {project.index} — {project.category} · {project.year}
+        </span>
+        <SplitReveal as="h1" className="cs__title serif" lines={[project.name]} delay={0.25} stagger={0.03} />
+        <p className="cs__tagline">{project.tagline}</p>
+        {project.liveUrl && (
+          <a href={project.liveUrl} target="_blank" rel="noreferrer" className="btn cs__visit">
+            Visit the live site <span className="arrow">↗</span>
+          </a>
+        )}
       </header>
+
+      <div className="wrap">
+        <div className="cs__cover">
+          <div className="frame">
+            <div className="frame__bar" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+              {project.liveUrl && <span>{host(project.liveUrl)}</span>}
+            </div>
+            <Picture src={project.cover} alt={`${project.name} — ${first.caption}`} eager sizes="(min-width: 1200px) 1200px, 100vw" />
+          </div>
+        </div>
+      </div>
 
       <div className="wrap cs__body">
         <p className="cs__summary lead">{project.summary}</p>
@@ -129,7 +125,7 @@ export default function CaseStudy() {
               <dt className="meta">Live</dt>
               <dd>
                 <a href={project.liveUrl} target="_blank" rel="noreferrer" className="ulink">
-                  {new URL(project.liveUrl).host.replace(/^www\./, '')} ↗
+                  {host(project.liveUrl)} ↗
                 </a>
               </dd>
             </div>
@@ -147,7 +143,12 @@ export default function CaseStudy() {
           <div className="cs__shots">
             {shots.map((s, i) => (
               <figure key={s.src} className={`cs__shot cs__shot--${i % 3}`}>
-                <div className="cs__shotFrame">
+                <div className="frame">
+                  <div className="frame__bar" aria-hidden="true">
+                    <i />
+                    <i />
+                    <i />
+                  </div>
                   <Picture src={s.src} alt={s.caption} sizes="(min-width: 900px) 70vw, 100vw" />
                 </div>
                 <figcaption className="meta">
@@ -164,9 +165,7 @@ export default function CaseStudy() {
             {project.features.length > 0 && (
               <ul className="cs__features">
                 {project.features.map((f) => (
-                  <li key={f}>
-                    <Lotus size={14} /> {f}
-                  </li>
+                  <li key={f}>{f}</li>
                 ))}
               </ul>
             )}
@@ -176,9 +175,7 @@ export default function CaseStudy() {
         <Chapter no="04" title="Technology">
           <ul className="cs__stack">
             {project.stack.map((s) => (
-              <li key={s} className="serif">
-                {s}
-              </li>
+              <li key={s}>{s}</li>
             ))}
           </ul>
         </Chapter>
@@ -198,7 +195,7 @@ export default function CaseStudy() {
             <p className="chapter__text">
               Live and in use at{' '}
               <a href={project.liveUrl} target="_blank" rel="noreferrer" className="ulink cs__liveLink">
-                {new URL(project.liveUrl).host.replace(/^www\./, '')} ↗
+                {host(project.liveUrl)} ↗
               </a>
             </p>
           )}
@@ -206,8 +203,8 @@ export default function CaseStudy() {
       </div>
 
       {next && next.slug !== project.slug && (
-        <Link to={`/work/${next.slug}`} className="cs__next" onClick={openNext} data-cursor="view" data-cursor-label="Next">
-          <div className="wrap cs__nextInner">
+        <Link to={`/work/${next.slug}`} className="cs__next" onClick={openNext}>
+          <div className="cs__nextInner">
             <span className="meta">Next project — {next.index}</span>
             <span className="cs__nextName serif">{next.name}</span>
           </div>

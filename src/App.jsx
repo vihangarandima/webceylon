@@ -4,7 +4,6 @@ import { ScrollTrigger } from './lib/motion';
 import { SmoothScroll } from './components/ui/SmoothScroll';
 import { PageTransitionProvider } from './components/ui/PageTransition';
 import Loader from './components/ui/Loader';
-import Cursor from './components/ui/Cursor';
 import Nav from './components/navigation/Nav';
 import Home from './pages/Home';
 import CaseStudy from './components/projects/CaseStudy';
@@ -36,7 +35,6 @@ export default function App() {
           Skip to content
         </a>
         <Loader onDone={onLoaded} />
-        <Cursor />
         <Nav />
         <RouteEffects />
         <main id="main">
@@ -52,7 +50,6 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-        <div className="grain" aria-hidden="true" />
       </PageTransitionProvider>
     </SmoothScroll>
   );
