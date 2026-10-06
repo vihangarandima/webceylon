@@ -1,0 +1,113 @@
+.iwall {
+  position: relative;
+  height: clamp(640px, 100svh, 860px);
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+  color: #fff;
+}
+
+/* Three rows filling the section, a small gap between screens */
+.iwall__rows {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-block: 10px;
+}
+.iwall__row {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+.iwall__track {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  width: max-content;
+  flex-shrink: 0;
+  will-change: transform;
+}
+.iwall__tile {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 4 / 3;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top left;
+  background: #111;
+  user-select: none;
+}
+
+/* Dark at the left for the words, and a soft vignette all round */
+.iwall__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.92) 26%, rgba(0, 0, 0, 0.55) 46%, transparent 68%),
+    radial-gradient(120% 96% at 50% 0%, transparent 74%, rgba(0, 0, 0, 0.28) 87%, rgba(0, 0, 0, 0.88) 97%, #000 100%),
+    linear-gradient(180deg, #000 0%, transparent 10%, transparent 90%, #000 100%);
+}
+
+.iwall__copy {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  justify-items: start;
+  height: 100%;
+  padding-top: clamp(96px, 16vh, 150px);
+}
+.iwall__title {
+  font-size: clamp(2rem, 1.3rem + 2.8vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+.iwall__text {
+  max-width: 30rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.12rem);
+}
+.iwall__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+/* the section is always dark, so its buttons use the dark-theme colours */
+.iwall .btn--solid {
+  background: #fff;
+  color: #000;
+}
+.iwall .btn--line {
+  --fill: #000;
+  color: #fff;
+}
+
+/* Phones: the words get the top of the section, the screens show below */
+@media (max-width: 699px) {
+  .iwall {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 300px;
+  }
+  .iwall__rows {
+    top: auto;
+    height: 330px;
+  }
+  .iwall__shade {
+    background:
+      linear-gradient(180deg, #000 0%, #000 calc(100% - 330px), rgba(0, 0, 0, 0.4) calc(100% - 250px), transparent calc(100% - 160px)),
+      linear-gradient(180deg, transparent 85%, #000 100%);
+  }
+  .iwall__copy {
+    padding-top: 72px;
+    padding-bottom: 40px;
+  }
+}

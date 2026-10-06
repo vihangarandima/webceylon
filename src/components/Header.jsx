@@ -1,10 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTheme } from '../lib/theme';
 import { STUDIO, whatsappLink } from '../data/studio';
 import Logo from './Logo';
 import Button from './Button';
 import './header.css';
+
+// The links in the floating bar (desktop) — the full menu has all of MENU.
+const BAR = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/works', label: 'Works' },
+  { to: '/#services', label: 'Services' },
+  { to: '/#approach', label: 'Approach' },
+  { to: '/#faq', label: 'FAQs' },
+];
 
 export const MENU = [
   { to: '/', label: 'Home' },
@@ -12,7 +21,7 @@ export const MENU = [
   { to: '/#services', label: 'Services' },
   { to: '/#approach', label: 'Approach' },
   { to: '/#faq', label: 'FAQs' },
-  { to: '/#contact', label: 'Contact' },
+  { to: '/contact', label: 'Contact' },
 ];
 
 export function ThemeSwitch({ className = '' }) {
@@ -54,15 +63,28 @@ export default function Header() {
 
   return (
     <header className={`header${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}`}>
-      <div className="wrap header__bar">
+      <div className="header__bar">
         <Link to="/" className="header__brand" aria-label="WEB CEYLON — home">
           <Logo />
         </Link>
 
+        <nav className="header__nav" aria-label="Primary">
+          {BAR.map((b) => (
+            <NavLink
+              key={b.label}
+              to={b.to}
+              end={b.end}
+              className={({ isActive }) => `header__link${isActive && !hash && b.end ? ' is-active' : ''}`}
+            >
+              {b.label}
+            </NavLink>
+          ))}
+        </nav>
+
         <div className="header__actions">
           <ThemeSwitch />
-          <Button to="/#contact" className="header__connect">
-            Connect
+          <Button to="/contact" className="header__connect">
+            Let’s Connect
           </Button>
           <button
             className="header__menu"

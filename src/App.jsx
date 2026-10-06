@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Works from './pages/Works';
 import CaseStudy from './pages/CaseStudy';
+import Contact from './pages/Contact';
 
 // New page: start at the top. A /#section link: go to that section once the
 // page has rendered.
@@ -40,7 +41,7 @@ export default function App() {
           <Route path="/services" element={<Navigate to="/#services" replace />} />
           <Route path="/process" element={<Navigate to="/#approach" replace />} />
           <Route path="/heritage-and-vision" element={<Navigate to="/#intro" replace />} />
-          <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

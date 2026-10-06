@@ -1,88 +1,131 @@
+/* A floating glass pill: logo, links in the middle, switch and button */
 .header {
   position: fixed;
-  inset: 0 0 auto;
+  top: 14px;
+  left: 0;
+  right: 0;
   z-index: 100;
-}
-/* The frosted backing lives on its own layer: a backdrop-filter on the
-   header itself would trap the fixed full-screen menu inside it. */
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: var(--header-h);
-  opacity: 0;
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  transition: opacity 0.4s var(--ease);
-}
-.header.is-scrolled::before,
-.header.is-open::before {
-  opacity: 1;
+  padding-inline: var(--gutter);
+  pointer-events: none;
 }
 .header__bar {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: var(--header-h);
+  gap: 16px;
+  max-width: 1080px;
+  height: 56px;
+  margin-inline: auto;
+  padding: 0 10px 0 22px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 62%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  backdrop-filter: blur(18px) saturate(1.3);
+  pointer-events: auto;
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.header.is-scrolled .header__bar,
+.header.is-open .header__bar {
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border-color: var(--line-2);
+  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.7);
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
+}
+.logo svg {
+  width: 22px;
+  height: 22px;
 }
 .logo__word {
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
 }
 .logo__word em {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: 1.12em;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+.header__nav {
+  display: none;
+  gap: 26px;
+  margin-inline: auto;
+}
+.header__link {
+  font-size: 15px;
   letter-spacing: -0.01em;
+  color: var(--text-2);
+  transition: color 0.25s;
+}
+.header__link:hover,
+.header__link.is-active {
+  color: var(--text);
 }
 
 .header__actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  margin-left: auto;
 }
 .header__connect {
-  min-height: 42px;
-  padding: 0 18px;
+  padding: 10px 16px;
 }
 
 /* Theme switch: a small pill with a sliding knob */
 .switch {
   position: relative;
-  width: 52px;
-  height: 28px;
+  width: 44px;
+  height: 24px;
   border-radius: 999px;
   border: 1px solid var(--line-2);
-  background: var(--panel-2);
+  background: var(--panel-3);
   transition: background 0.4s var(--ease);
 }
 .switch__knob {
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: var(--text);
   transition: transform 0.45s var(--ease), background 0.4s;
 }
 .switch[aria-checked='true'] .switch__knob {
-  transform: translateX(24px);
+  transform: translateX(20px);
+}
+
+@media (min-width: 960px) {
+  .header__nav {
+    display: flex;
+  }
+  .header__actions {
+    margin-left: 0;
+  }
+  .header__menu {
+    display: none !important;
+  }
+}
+@media (max-width: 420px) {
+  .header__connect {
+    display: none !important;
+  }
 }
 
 .header__menu {
   position: relative;
-  width: 44px;
-  height: 44px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid var(--line-2);
   transition: border-color 0.3s, background 0.3s;
@@ -98,37 +141,35 @@
   background: var(--text);
   transition: transform 0.45s var(--ease), top 0.45s var(--ease);
 }
+.header__menu i {
+  left: 12px;
+  right: 12px;
+}
 .header__menu i:first-child {
-  top: 17px;
+  top: 15px;
 }
 .header__menu i:last-child {
-  top: 25px;
+  top: 23px;
 }
 .is-open .header__menu i:first-child {
-  top: 21px;
+  top: 19px;
   transform: rotate(45deg);
 }
 .is-open .header__menu i:last-child {
-  top: 21px;
+  top: 19px;
   transform: rotate(-45deg);
-}
-
-@media (max-width: 420px) {
-  .header__connect {
-    display: none !important;
-  }
 }
 
 /* ---------- Full-screen menu ---------- */
 
 .menu {
   position: fixed;
-  top: var(--header-h);
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+  z-index: -1;
+  padding-top: 84px;
   overflow-y: auto;
   background: var(--bg);
+  pointer-events: auto;
 }
 .menu[hidden] {
   display: none;
