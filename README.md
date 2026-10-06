@@ -29,17 +29,17 @@ src/
   lib/           gsap setup, shared scene state, loader progress
   components/
     three/       the mask: geometry + painted textures, lighting, particles
-    hero/ statement/ portfolio/ services/ about/ technology/ process/ contact/
+    hero/ statement/ portfolio/ services/ about/ process/ contact/
     projects/    case study page
     navigation/  nav bar and fullscreen menu
-    ui/          cursor, loader, smooth scroll, page transition, ornaments
+    ui/          loader, smooth scroll, page transition, ornaments
 docs/            mask-3d-implementation-guide.md
 ```
 
 ## Notes
 
 - No WebGL, or a lost GL context → the hero shows the mask photograph instead.
-- `prefers-reduced-motion` → no smooth scroll, no pinned sections, static mask.
+- `prefers-reduced-motion` → no smooth scroll, static mask.
 - `vercel.json` rewrites every path to `index.html`, so `/work/caltea` and the
   old `/services`-style URLs work on refresh.
 - The old static site (`*.html`, `css/`, `js/`, `index.html.bak`) is not part

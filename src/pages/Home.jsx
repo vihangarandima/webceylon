@@ -7,7 +7,6 @@ import Statement from '../components/statement/Statement';
 import Work from '../components/portfolio/Work';
 import Services from '../components/services/Services';
 import About from '../components/about/About';
-import Technology from '../components/technology/Technology';
 import Process from '../components/process/Process';
 import Contact from '../components/contact/Contact';
 
@@ -33,7 +32,6 @@ export default function Home({ ready }) {
       <Work />
       <Services />
       <About />
-      <Technology />
       <Process />
       <Contact />
     </>

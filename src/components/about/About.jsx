@@ -55,14 +55,10 @@ export default function About() {
   return (
     <section ref={root} id="about" className="section about" aria-labelledby="about-title">
       <div className="wrap">
-        <div className="section-head">
-          <span className="meta">(05) About</span>
-          <span className="meta">Who we are</span>
-        </div>
-
         <div className="about__grid">
           <div className="about__copy">
-            <SplitReveal id="about-title" className="h2 about__title" lines={['Rooted in', 'Ceylon,', 'built for', 'anywhere.']} />
+            <span className="eyebrow">About</span>
+            <SplitReveal id="about-title" className="h2 about__title" lines={['Rooted in Ceylon,', 'built for anywhere.']} />
             <p className="lead about__lead">
               WEB CEYLON is an independent web studio in Colombo. We design and build websites, web applications and
               interactive experiences for businesses that want to look as good online as they are in person.
@@ -83,7 +79,7 @@ export default function About() {
               alt="A hand-carved Gurulu Raksha mask, painted in red, yellow and black with white-beaded eye rings."
               sizes="(min-width: 900px) 36vw, 90vw"
             />
-            <figcaption className="meta">Gurulu Raksha — carved and painted by hand. The reference for everything on this page.</figcaption>
+            <figcaption>Gurulu Raksha — carved and painted by hand. The reference for everything on this page.</figcaption>
           </figure>
         </div>
 

@@ -103,23 +103,18 @@ export default function Hero({ ready }) {
         },
       });
       // The canvas fades as the portfolio arrives, then stops rendering.
-      // On phones the mask cannot move aside, so it dims behind the statement.
+      // On phones the mask cannot move aside, so it leaves before the statement.
       const narrow = window.innerWidth < 900;
-      if (narrow) {
-        gsap.to(stage.current, {
-          opacity: 0.22,
-          ease: 'none',
-          scrollTrigger: { trigger: statementEl, start: 'top 85%', end: 'top 30%', scrub: true },
-        });
-      }
       gsap.fromTo(
         [stage.current, backdrop.current],
-        { opacity: (i) => (narrow && i === 0 ? 0.22 : 1) },
+        { opacity: 1 },
         {
           opacity: 0,
           ease: 'none',
           immediateRender: false,
-          scrollTrigger: { trigger: statementEl, start: 'bottom 110%', end: 'bottom 40%', scrub: true },
+          scrollTrigger: narrow
+            ? { trigger: statementEl, start: 'top 95%', end: 'top 45%', scrub: true }
+            : { trigger: statementEl, start: 'bottom 110%', end: 'bottom 40%', scrub: true },
         }
       );
       ScrollTrigger.create({
@@ -147,7 +142,7 @@ export default function Hero({ ready }) {
       const out = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true };
       gsap.to('.hero__word--a', { xPercent: -14, yPercent: -25, ease: 'none', scrollTrigger: out });
       gsap.to('.hero__word--b', { xPercent: 12, yPercent: 20, ease: 'none', scrollTrigger: out });
-      gsap.to('.hero__foot, .hero__top', { opacity: 0, y: -40, ease: 'none', scrollTrigger: { ...out, end: '60% top' } });
+      gsap.to('.hero__foot', { opacity: 0, y: -40, ease: 'none', scrollTrigger: { ...out, end: '60% top' } });
     },
     { scope: root }
   );
@@ -182,11 +177,6 @@ export default function Hero({ ready }) {
       </p>
 
       <div className="hero__inner wrap">
-        <div className="hero__top">
-          <span className="meta hero__fade">(01) Intro</span>
-          <span className="meta hero__fade">6°50′N 79°54′E — Colombo, Sri Lanka</span>
-        </div>
-
         <h1 id="hero-title" className="hero__title">
           <SplitReveal as="span" className="hero__word hero__word--a" lines={['WEB']} trigger="manual" play={ready} stagger={0.06} duration={1.6} />
           <SplitReveal as="span" className="hero__word hero__word--b" lines={['Ceylon']} trigger="manual" play={ready} delay={0.15} stagger={0.06} duration={1.6} />
@@ -201,19 +191,37 @@ export default function Hero({ ready }) {
                 </>
               ) : (
                 <>
-                  We build <em>exceptional</em> digital experiences.
+                  Websites made with <em>care</em>, in Colombo.
                 </>
               )}
             </p>
             <p className="hero__sub">
-              An independent web studio in Colombo. Websites, web applications and interactive work —
-              made by hand, in detail, to be looked at twice.
+              An independent studio designing and building websites, web applications and online stores for
+              businesses in Sri Lanka and abroad.
             </p>
           </div>
-          <button className="hero__scroll hero__fade" onClick={() => scrollTo('#work')}>
-            <span className="meta">{welcomeBack ? 'Back to the work' : 'Scroll to the work'}</span>
-            <span className="hero__scroll-line" aria-hidden="true" />
-          </button>
+          <div className="hero__actions hero__fade">
+            <a
+              href="#work"
+              className="btn"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('#work');
+              }}
+            >
+              {welcomeBack ? 'Back to the work' : 'See our work'} <span className="arrow">↓</span>
+            </a>
+            <a
+              href="#contact"
+              className="btn btn--ghost"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('#contact');
+              }}
+            >
+              Start a project
+            </a>
+          </div>
         </div>
       </div>
     </section>

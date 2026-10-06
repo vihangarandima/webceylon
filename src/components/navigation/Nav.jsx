@@ -26,27 +26,19 @@ function RollText({ children }) {
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [time, setTime] = useState('');
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(null);
   const btnRef = useRef(null);
   const { scrollTo, stop, start, lenis } = useScroll();
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Colombo time, a quiet local detail
-  useEffect(() => {
-    const fmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Colombo' });
-    const tick = () => setTime(fmt.format(new Date()));
-    tick();
-    const id = setInterval(tick, 30000);
-    return () => clearInterval(id);
-  }, []);
-
   // Hide on the way down, return on the way up.
   useEffect(() => {
     let last = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
+      setScrolled(y > 40);
       if (Math.abs(y - last) < 6) return;
       setHidden(y > last && y > 240);
       last = y;
@@ -66,7 +58,7 @@ export default function Nav() {
     setTimeout(() => scrollTo(`#${id}`), open ? 500 : 0);
   };
 
-  // Menu open/close: a crimson-lacquer panel wipes down, the links rise.
+  // Menu open/close: a paper panel wipes down, the links rise.
   useEffect(() => {
     const el = menuRef.current;
     if (!el) return;
@@ -112,7 +104,7 @@ export default function Nav() {
 
   return (
     <>
-      <header className={`nav${hidden && !open ? ' is-hidden' : ''}${open ? ' is-open' : ''}`}>
+      <header className={`nav${hidden && !open ? ' is-hidden' : ''}${open ? ' is-open' : ''}${scrolled ? ' is-scrolled' : ''}`}>
         <div className="nav__inner">
           <Link to="/" className="nav__brand" onClick={toTop} aria-label="WEB CEYLON — home">
             <Lotus size={26} className="nav__lotus" />
@@ -121,18 +113,17 @@ export default function Nav() {
             </span>
           </Link>
 
-          <span className="nav__time meta" aria-label={`Colombo time ${time}`}>
-            Colombo <span>{time}</span>
-          </span>
-
           <nav className="nav__links" aria-label="Primary">
-            {NAV_LINKS.map((l, i) => (
+            {NAV_LINKS.map((l) => (
               <a key={l.id} href={`/#${l.id}`} onClick={go(l.id)} className="nav__link">
-                <sup>0{i + 1}</sup>
                 <RollText>{l.label}</RollText>
               </a>
             ))}
           </nav>
+
+          <a href="/#contact" onClick={go('contact')} className="btn nav__cta">
+            Start a project
+          </a>
 
           <Magnetic strength={0.3}>
             <button
@@ -153,7 +144,6 @@ export default function Nav() {
       </header>
 
       <div id="site-menu" ref={menuRef} className="menu" hidden role="dialog" aria-modal="true" aria-label="Site menu">
-        <Lotus size={560} className="menu__lotus menu__fade" strokeWidth={0.35} />
         <div className="menu__inner wrap">
           <ul className="menu__list">
             {NAV_LINKS.map((l, i) => (

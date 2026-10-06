@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import MaskSculpture from './MaskSculpture';
-import Particles from './Particles';
 import { StudioEnvironment, AdaptiveDpr } from './StudioLighting';
 import { scene as state, on, emit } from '../../lib/sceneState';
 import { markFirstFrame } from '../../lib/loadTracker';
@@ -38,8 +37,9 @@ function Rig({ reduced }) {
     const angle = k * 0.75;
     const radius = base * (1 + k * 0.15);
     camera.position.set(Math.sin(angle) * radius, 0.5 + k * 0.5, Math.cos(angle) * radius);
-    // On portrait screens aim lower, which lifts the mask clear of the title.
-    lookAt.current.set(0, camera.aspect < 0.8 ? -0.15 : 0.6, 0);
+    // On portrait screens aim a little lower, centring the mask between the
+    // title band and the copy below it.
+    lookAt.current.set(0, camera.aspect < 0.8 ? 0.2 : 0.6, 0);
     camera.lookAt(lookAt.current);
 
     c.lx = damp(c.lx, reduced ? -0.4 : state.pointer.x, 3, dt);
@@ -50,8 +50,8 @@ function Rig({ reduced }) {
     }
     if (key.current) key.current.intensity = 1.1 * intro;
     if (rim.current) rim.current.intensity = 2.4 * intro;
-    // Environment light rises with the intro: the mask emerges from darkness.
-    scene.environmentIntensity = 0.08 + 0.62 * intro;
+    // Environment light rises with the intro: the mask warms into full colour.
+    scene.environmentIntensity = 0.3 + 0.45 * intro;
   });
 
   return (
@@ -121,7 +121,6 @@ export default function HeroScene({ tier = 'high', reduced = false }) {
       {!reduced && <AdaptiveDpr high={dpr} />}
       <Rig reduced={reduced} />
       <MaskSculpture quality={high ? 'high' : 'low'} reduced={reduced} />
-      <Particles count={high ? 700 : 220} reduced={reduced} />
       <StudioEnvironment />
       <FirstFrame />
       <Precompile onDone={onCompiled} />

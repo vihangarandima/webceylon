@@ -5,8 +5,8 @@
   display: grid;
   place-items: center;
   background:
-    radial-gradient(60% 50% at 50% 42%, rgba(94, 65, 40, 0.28), transparent 70%),
-    var(--ink);
+    radial-gradient(40% 40% at 50% 42%, rgba(201, 164, 92, 0.18), transparent 70%),
+    var(--paper);
   clip-path: inset(0% 0% 0% 0%);
 }
 
@@ -31,7 +31,7 @@
   font-size: clamp(2.4rem, 9vw, 7.5rem);
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--bone);
+  color: var(--text);
 }
 .loader__word span {
   display: inline-block;
