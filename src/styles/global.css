@@ -194,16 +194,60 @@ ol {
   color: var(--text-2);
 }
 
+/* ---------- Light beam border ----------
+   A short beam of blue light travels round the edge, over a faint resting
+   border, with a soft glow inside. Used on tag pills always, and on outline
+   buttons while hovered. */
+
+@property --beam {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes beam {
+  to {
+    --beam: 360deg;
+  }
+}
+
+.tag,
+.btn--line {
+  --fill: color-mix(in srgb, var(--bg) 80%, var(--panel));
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--fill), var(--fill)) padding-box,
+    conic-gradient(
+        from var(--beam),
+        var(--line-2) 0deg,
+        var(--line-2) 230deg,
+        rgba(31, 107, 255, 0.6) 280deg,
+        #a9c6ff 320deg,
+        rgba(31, 107, 255, 0.6) 340deg,
+        var(--line-2) 360deg
+      )
+      border-box;
+}
+
 .tag {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 9px 18px;
   border-radius: 999px;
-  border: 1px solid var(--line-2);
-  background: color-mix(in srgb, var(--panel) 70%, transparent);
   font-size: 0.85rem;
   font-weight: 500;
+  box-shadow: inset 0 0 14px rgba(31, 107, 255, 0.18), 0 0 24px -8px var(--glow);
+  animation: beam 4.5s linear infinite;
+}
+
+.btn--line {
+  transition: box-shadow 0.4s var(--ease);
+}
+.btn--line:hover,
+.btn--line:focus-visible {
+  animation: beam 2.2s linear infinite;
+  box-shadow: inset 0 0 14px rgba(31, 107, 255, 0.2), 0 0 28px -8px var(--glow);
 }
 
 .section {
@@ -245,12 +289,6 @@ ol {
 }
 .btn--solid:hover {
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--invert) 18%, transparent);
-}
-.btn--line {
-  border-color: var(--line-2);
-}
-.btn--line:hover {
-  border-color: var(--text);
 }
 .btn--blue {
   background: var(--blue);

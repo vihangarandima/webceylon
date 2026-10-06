@@ -100,7 +100,7 @@ export default function EditorShowcase() {
   const strip = (
     <>
       {shots.map((s) => (
-        <Link key={s.src} to={`/work/${s.project.slug}`} className="shot" title={`${s.project.name} — ${s.caption}`}>
+        <Link key={s.src} to={`/work/${s.project.slug}`} className="shot" data-cursor="View" title={`${s.project.name} — ${s.caption}`}>
           <span className="shot__label">
             <span className="shot__dot" style={{ background: s.project.accent }} />
             {s.project.name}

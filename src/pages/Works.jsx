@@ -58,7 +58,7 @@ function CategoryPicker({ value, options, onChange }) {
 
 export function WorkCard({ project, eager }) {
   return (
-    <Link to={`/work/${project.slug}`} className="wcard">
+    <Link to={`/work/${project.slug}`} className="wcard" data-cursor="View">
       <span className="wcard__media">
         <Picture src={project.cover} alt={`${project.name} — ${project.gallery[0].caption}`} sizes="(min-width: 900px) 48vw, 92vw" eager={eager} />
         <span className="wcard__hover" aria-hidden="true">

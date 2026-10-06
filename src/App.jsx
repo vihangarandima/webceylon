@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './lib/theme';
 import Header from './components/Header';
+import Cursor from './components/Cursor';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Works from './pages/Works';
@@ -29,6 +30,7 @@ export default function App() {
         Skip to content
       </a>
       <ScrollManager />
+      <Cursor />
       <Header />
       <main id="main">
         <Routes>

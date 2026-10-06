@@ -100,7 +100,7 @@ export default function WorkRing() {
 
   return (
     <section ref={section} id="work" className="ring-section" aria-labelledby="work-title">
-      <div className="ring-stage">
+      <div className="ring-stage" data-cursor="Drag">
         <div className="ring-glow" aria-hidden="true" />
         <div className="ring-scene">
           <div ref={ring} className="ring">
@@ -109,6 +109,7 @@ export default function WorkRing() {
                 key={i}
                 to={`/work/${c.shot.project.slug}`}
                 className="ring__card"
+                data-cursor="View"
                 style={{ '--a': `${c.angle}deg`, '--row': c.row }}
                 tabIndex={-1}
                 aria-hidden="true"
