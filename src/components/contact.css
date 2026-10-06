@@ -168,3 +168,7 @@
     gap: 64px;
   }
 }
+
+.contact-page {
+  padding-top: calc(var(--header-h) + 24px);
+}

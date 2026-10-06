@@ -167,3 +167,42 @@ export const FAQS = [
     'Yes. We work with clients in Sri Lanka and abroad, keeping in touch over email, WhatsApp and video calls across time zones.',
   ],
 ];
+
+// The ten tiles in "Elevate your digital footprint". Two-line labels: the
+// line break is where the label wraps on the tile.
+export const SERVICE_TILES = [
+  { icon: 'globe', label: ['Crafted', 'Websites'] },
+  { icon: 'redesign', label: ['Website', 'Redesign'] },
+  { icon: 'cart', label: ['E-commerce', 'Website Design'] },
+  { icon: 'app', label: ['Web', 'Applications'] },
+  { icon: 'send', label: ['Landing Pages', '& Microsites'] },
+  { icon: 'pen', label: ['UI / UX', 'Design'] },
+  { icon: 'bolt', label: ['Motion &', 'Interaction Design'] },
+  { icon: 'cube', label: ['3D & WebGL', 'Experiences'] },
+  { icon: 'rocket', label: ['Performance', 'Optimization'] },
+  { icon: 'tools', label: ['Maintenance &', 'Ongoing Support'] },
+];
+
+// Starting packages. Every project is quoted on its real scope, so no
+// prices are shown until the studio decides to publish them: set `price`
+// (e.g. 'LKR 150,000' or '$800') and it appears instead of "Quote on request".
+export const PACKAGES = [
+  {
+    name: 'Business Website',
+    price: '',
+    text: 'Your full presence online — the core pages designed from a blank page and built to load fast.',
+    items: ['Custom design, no templates', 'Responsive on every screen', 'Animation and interactions', 'Basic SEO setup'],
+  },
+  {
+    name: 'E-commerce Store',
+    price: '',
+    text: 'A complete store — catalogue, cart and checkout, with a dashboard you can actually run.',
+    items: ['Product, cart and checkout pages', 'Local and international payments', 'Store management dashboard', 'Mobile-first shopping'],
+  },
+  {
+    name: 'Custom Build',
+    price: '',
+    text: 'Web applications, 3D experiences and long-running partnerships — scoped together first.',
+    items: ['Discovery and scoping first', 'Accounts, roles and dashboards', 'Advanced motion and 3D', 'Maintenance and support plans'],
+  },
+];

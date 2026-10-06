@@ -325,11 +325,11 @@
   .editor__top {
     justify-content: space-between;
   }
+}
+@media (min-width: 1024px) {
   .editor__hint {
     display: block;
   }
-}
-@media (min-width: 1024px) {
   .editor__body {
     grid-template-columns: 220px minmax(0, 1fr) 220px;
   }

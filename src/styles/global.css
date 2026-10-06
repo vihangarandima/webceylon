@@ -1,20 +1,22 @@
 /* ==========================================================================
    WEB CEYLON
    Night by default: black canvas, white type, electric-blue light. A light
-   theme is one switch away. Bold sans for the voice, an italic serif for the
-   words that matter.
+   theme is one switch away.
+   Outfit for headlines, Fraunces light italic for the words that matter,
+   Geist for everything you read.
    ========================================================================== */
 
 :root {
   --bg: #000000;
-  --bg-2: #0b0b0d;
-  --panel: #111114;
-  --panel-2: #1a1a1f;
+  --bg-2: #070707;
+  --panel: #0c0c0c;
+  --panel-2: #161616;
+  --panel-3: #1f1f1f;
   --text: #ffffff;
-  --text-2: rgba(255, 255, 255, 0.72);
-  --text-3: rgba(255, 255, 255, 0.5);
-  --line: rgba(255, 255, 255, 0.1);
-  --line-2: rgba(255, 255, 255, 0.18);
+  --text-2: #9a9a9a;
+  --text-3: #6b6b6b;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.14);
   --invert: #ffffff;
   --on-invert: #000000;
 
@@ -22,29 +24,31 @@
   --blue-2: #0a4bd8;
   --glow: rgba(31, 107, 255, 0.55);
 
-  --sans: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
-  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --display: 'Outfit', 'Geist', system-ui, sans-serif;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  --gutter: clamp(16px, 3vw, 40px);
-  --max: 1320px;
-  --header-h: 76px;
-  --r-lg: 28px;
-  --r: 18px;
+  --gutter: clamp(16px, 2.6vw, 32px);
+  --max: 1440px;
+  --header-h: 84px;
+  --r-lg: 22px;
+  --r: 16px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   color-scheme: dark;
 }
 
 [data-theme='light'] {
-  --bg: #f5f5f3;
-  --bg-2: #ececea;
+  --bg: #f6f6f4;
+  --bg-2: #efefec;
   --panel: #ffffff;
-  --panel-2: #f0f0ee;
+  --panel-2: #f1f1ef;
+  --panel-3: #e7e7e4;
   --text: #0a0a0a;
-  --text-2: rgba(10, 10, 10, 0.72);
-  --text-3: rgba(10, 10, 10, 0.55);
-  --line: rgba(10, 10, 10, 0.1);
-  --line-2: rgba(10, 10, 10, 0.18);
+  --text-2: #5f5f5f;
+  --text-3: #8a8a8a;
+  --line: rgba(10, 10, 10, 0.08);
+  --line-2: rgba(10, 10, 10, 0.16);
   --invert: #0a0a0a;
   --on-invert: #ffffff;
   --glow: rgba(31, 107, 255, 0.35);
@@ -69,7 +73,7 @@ body {
   color: var(--text);
   font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -80,7 +84,8 @@ body.no-scroll {
 }
 img,
 svg,
-picture {
+picture,
+canvas {
   display: block;
   max-width: 100%;
 }
@@ -112,7 +117,8 @@ ul,
 ol,
 dl,
 dd,
-figure {
+figure,
+blockquote {
   margin: 0;
 }
 ul,
@@ -166,59 +172,95 @@ ol {
 /* ---------- Type ---------- */
 
 .display {
-  font-size: clamp(2.6rem, 1.4rem + 5vw, 5.6rem);
-  font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  font-family: var(--display);
+  font-size: clamp(2.7rem, 1.2rem + 5.4vw, 5.75rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.06em;
 }
 .h2 {
-  font-size: clamp(2.1rem, 1.3rem + 3.2vw, 4rem);
-  font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 1.3rem + 2.8vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+.h3 {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 1.2rem + 0.7vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
 }
 .display em,
 .h2 em,
+.h3 em,
 .serif {
   font-family: var(--serif);
   font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-weight: 300;
+  letter-spacing: -0.04em;
 }
 .lead {
-  font-size: clamp(1.05rem, 0.98rem + 0.4vw, 1.25rem);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
   color: var(--text-2);
-  line-height: 1.55;
 }
 .muted {
   color: var(--text-2);
 }
-
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--line-2);
-  background: color-mix(in srgb, var(--panel) 70%, transparent);
-  font-size: 0.85rem;
+.text b,
+.lead b {
+  color: var(--text);
   font-weight: 500;
 }
 
 .section {
   position: relative;
-  padding-block: clamp(80px, 10vw, 150px);
+  padding-block: clamp(72px, 9vw, 130px);
 }
-.section-head {
-  display: grid;
-  justify-items: center;
-  gap: 18px;
+.section-title {
   text-align: center;
-  margin-bottom: clamp(40px, 6vw, 72px);
+  margin-bottom: clamp(32px, 4vw, 56px);
 }
-.section-head .lead {
-  max-width: 36rem;
+
+/* ---------- Tag pill with a travelling beam of light ---------- */
+
+@property --beam {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes beam {
+  to {
+    --beam: 360deg;
+  }
+}
+.tag {
+  --fill: color-mix(in srgb, var(--bg) 82%, var(--panel-3));
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--fill), var(--fill)) padding-box,
+    conic-gradient(
+        from var(--beam),
+        var(--line-2) 0deg,
+        var(--line-2) 230deg,
+        rgba(31, 107, 255, 0.6) 280deg,
+        #a9c6ff 320deg,
+        rgba(31, 107, 255, 0.6) 340deg,
+        var(--line-2) 360deg
+      )
+      border-box;
+  box-shadow: inset 0 0 14px rgba(31, 107, 255, 0.18), 0 0 24px -8px var(--glow);
+  font-size: 0.8rem;
+  font-weight: 500;
+  animation: beam 4.5s linear infinite;
 }
 
 /* ---------- Buttons ---------- */
@@ -229,25 +271,37 @@ ol {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 46px;
-  padding: 0 22px;
+  padding: 9px 15px;
   border-radius: 999px;
   border: 1px solid transparent;
-  font-size: 0.95rem;
+  font-size: 14px;
   font-weight: 500;
+  line-height: 1;
   white-space: nowrap;
-  transition: background 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease),
-    box-shadow 0.35s var(--ease);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.btn--lg {
+  padding: 13px 22px;
+  font-size: 15px;
 }
 .btn--solid {
   background: var(--invert);
   color: var(--on-invert);
 }
 .btn--solid:hover {
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--invert) 18%, transparent);
+  background: color-mix(in srgb, var(--invert) 86%, var(--bg));
+}
+.btn--dark {
+  background: var(--panel-3);
+  border-color: var(--line);
+  color: var(--text);
+}
+.btn--dark:hover {
+  background: color-mix(in srgb, var(--panel-3) 70%, var(--text) 10%);
 }
 .btn--line {
   border-color: var(--line-2);
+  color: var(--text);
 }
 .btn--line:hover {
   border-color: var(--text);
@@ -258,14 +312,13 @@ ol {
 }
 .btn--blue:hover {
   background: var(--blue-2);
-  box-shadow: 0 10px 30px -10px var(--glow);
 }
 /* Letters roll: the label slides up and an identical copy follows */
 .roll {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  line-height: 1.25;
+  line-height: 1.15;
 }
 .roll > span {
   display: inline-block;
@@ -289,7 +342,7 @@ ol {
 
 .reveal-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
   filter: blur(6px);
   transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
   transition-delay: var(--d, 0s);
@@ -305,12 +358,11 @@ ol {
 .marquee {
   display: flex;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
 .marquee__track {
   display: flex;
   flex-shrink: 0;
+  align-items: center;
   gap: var(--gap, 48px);
   padding-right: var(--gap, 48px);
   animation: marquee var(--speed, 40s) linear infinite;
@@ -321,6 +373,19 @@ ol {
 @keyframes marquee {
   to {
     transform: translateX(-100%);
+  }
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 639px) {
+  .section {
+    padding-block: 64px;
+  }
+  .reveal-ready [data-reveal] {
+    filter: none;
+    transform: translateY(16px);
+    transition-duration: 0.6s;
   }
 }
 
