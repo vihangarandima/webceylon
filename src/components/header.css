@@ -35,23 +35,27 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 }
 .logo svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 .logo__word {
   font-family: var(--display);
-  font-size: 1.12rem;
-  font-weight: 500;
-  letter-spacing: -0.04em;
+  font-size: clamp(1rem, 2.8vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
   white-space: nowrap;
 }
 .logo__word em {
   font-family: var(--serif);
   font-weight: 300;
-  letter-spacing: -0.03em;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  opacity: 0.92;
+  margin-left: 2px;
 }
 
 .header__nav {

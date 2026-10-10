@@ -2,7 +2,7 @@
 // ones the previous site published.
 
 export const STUDIO = {
-  name: 'WEB CEYLON',
+  name: 'Global Arc Solutions',
   location: 'Boralasgamuwa, Colombo',
   address: '551/1, Thalgahawatta Road, Wawa Road, Boralasgamuwa, Sri Lanka',
   phoneDisplay: '070 243 4288',

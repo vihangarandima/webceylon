@@ -85,7 +85,7 @@ export default function Works() {
 
   useReveal(root, [category]);
   useEffect(() => {
-    document.title = 'Works — Web Design Portfolio | WEB CEYLON';
+    document.title = 'Works — Portfolio | Global Arc Solutions';
   }, []);
 
   return (

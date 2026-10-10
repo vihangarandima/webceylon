@@ -6,7 +6,7 @@ export default function Contact() {
   const root = useRef(null);
   useReveal(root);
   useEffect(() => {
-    document.title = 'Contact — Start a project | WEB CEYLON';
+    document.title = 'Contact — Start a project | Global Arc Solutions';
   }, []);
   return (
     <div ref={root} className="contact-page">

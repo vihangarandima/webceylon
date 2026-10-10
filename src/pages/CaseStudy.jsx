@@ -17,7 +17,7 @@ export default function CaseStudy() {
   useReveal(root, [slug]);
 
   useEffect(() => {
-    if (project) document.title = `${project.name} — Case Study | WEB CEYLON`;
+    if (project) document.title = `${project.name} — Case Study | Global Arc Solutions`;
   }, [project]);
 
   if (!project) return <Navigate to="/works" replace />;

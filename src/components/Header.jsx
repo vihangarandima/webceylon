@@ -64,7 +64,7 @@ export default function Header() {
   return (
     <header className={`header${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}`}>
       <div className="header__bar">
-        <Link to="/" className="header__brand" aria-label="WEB CEYLON — home">
+        <Link to="/" className="header__brand" aria-label="Global Arc Solutions — home">
           <Logo />
         </Link>
 
@@ -121,7 +121,7 @@ export default function Header() {
             <a href={STUDIO.phoneHref} className="menu__contact">
               {STUDIO.phoneDisplay}
             </a>
-            <Button href={whatsappLink('Hello WEB CEYLON, I would like to discuss a website project.')} target="_blank" rel="noreferrer" variant="blue">
+            <Button href={whatsappLink('Hello Global Arc Solutions, I would like to discuss a website project.')} target="_blank" rel="noreferrer" variant="blue">
               WhatsApp us
             </Button>
           </div>

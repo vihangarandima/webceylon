@@ -90,7 +90,7 @@ export default function IntroWall() {
           Delivery that converts.
         </h2>
         <p className="iwall__text" data-reveal style={{ '--d': '0.08s' }}>
-          WEB CEYLON crafts focused digital experiences that make a brand look as good online as it is in person.
+          Global Arc Solutions crafts focused digital experiences that make a brand look as good online as it is in person.
           Considered design and clean engineering, from the first sketch to the last line of code — built to win
           attention and turn visitors into customers.
         </p>

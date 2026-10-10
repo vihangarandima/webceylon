@@ -105,7 +105,7 @@ function EditorVisual() {
         <svg viewBox="0 0 16 16" width="16" height="16">
           <path d="M2 1l11 6-5 1.4L6 14z" fill="currentColor" />
         </svg>
-        <b>Web Ceylon</b>
+        <b>Global Arc</b>
       </span>
     </div>
   );

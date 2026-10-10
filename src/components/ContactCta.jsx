@@ -17,7 +17,7 @@ function Brief() {
       return;
     }
     setError('');
-    const body = `Hello WEB CEYLON,\n\n${form.message}\n\nService: ${form.service}\nName: ${form.name}${form.email ? `\nEmail: ${form.email}` : ''}`;
+    const body = `Hello Global Arc Solutions,\n\n${form.message}\n\nService: ${form.service}\nName: ${form.name}${form.email ? `\nEmail: ${form.email}` : ''}`;
     if (form.via === 'whatsapp') window.open(whatsappLink(body), '_blank', 'noopener');
     else
       window.location.href = `mailto:${STUDIO.email}?subject=${encodeURIComponent(`Project enquiry — ${form.service}`)}&body=${encodeURIComponent(body)}`;

@@ -19,7 +19,7 @@ export default function Footer() {
   const github = STUDIO.social.find((s) => s.label === 'GitHub' && s.href);
   const links = [
     github && { label: 'GitHub', href: github.href, icon: <Brand name="github" size={18} />, external: true },
-    { label: 'WhatsApp', href: whatsappLink('Hello WEB CEYLON!'), icon: <Brand name="whatsapp" size={18} />, external: true },
+    { label: 'WhatsApp', href: whatsappLink('Hello Global Arc Solutions!'), icon: <Brand name="whatsapp" size={18} />, external: true },
     { label: 'Email', href: `mailto:${STUDIO.email}`, icon: <Mail /> },
     { label: 'Call', href: STUDIO.phoneHref, icon: <Phone /> },
   ].filter(Boolean);
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="footer__copy wrap">© {new Date().getFullYear()} WEB CEYLON. All rights reserved.</p>
+      <p className="footer__copy wrap">© {new Date().getFullYear()} Global Arc Solutions. All rights reserved.</p>
     </footer>
   );
 }

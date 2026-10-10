@@ -238,7 +238,7 @@ export default function Home() {
   useReveal(root);
 
   useEffect(() => {
-    document.title = 'WEB CEYLON | Premium Web Design Studio, Colombo';
+    document.title = 'Global Arc Solutions | Design & Engineering Studio';
   }, []);
 
   return (
